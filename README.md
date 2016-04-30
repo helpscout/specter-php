@@ -1,6 +1,7 @@
-Specter :: Mocking and Testing for PHP
+Specter [![Build Status](https://travis-ci.org/helpscout/specter.svg?branch=master)](https://travis-ci.org/helpscout/specter)
 ================================================================================
-> Use a single JSON file to generate mock data and as a test assertion
+> __Mocking and Testing for PHP__
+> Use a single JSON file to generate mock data and as an integration test assertion
 
 Modern development is complicated. This project will help you decouple API
 development from client implementation in three steps.
