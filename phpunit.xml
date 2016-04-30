@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -12,6 +12,7 @@
     <testsuites>
         <testsuite name="Specter Test Suite">
             <directory suffix=".php">./tests/</directory>
+            <exclude>tests/src/ExampleTest.php</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

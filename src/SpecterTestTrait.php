@@ -63,7 +63,7 @@ trait SpecterTestTrait
      *
      * @var string
      */
-    static private $fixtureFolder = '';
+    static protected $fixtureFolder = '';
 
     /**
      * Assert that a response matches a spec file and status code
@@ -273,7 +273,7 @@ trait SpecterTestTrait
      */
     static public function setFixtureFolder($path)
     {
-        self::$fixtureFolder = trim($path, '/');
+        self::$fixtureFolder = rtrim($path, '/');
     }
 }
 

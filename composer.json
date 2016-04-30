@@ -39,6 +39,7 @@
         "sniff": "vendor/bin/phpcs --standard=PSR2 --warning-severity=0 --extensions=php src tests",
         "strict": "vendor/bin/phpcs --standard=PSR2 --extensions=php src tests",
         "format": "vendor/bin/phpcbf --standard=PSR2 --extensions=php src tests",
-        "phpunit": "vendor/bin/phpunit --verbose"
+        "phpunit": "vendor/bin/phpunit --verbose",
+        "phpunit-example": "vendor/bin/phpunit --verbose tests/src/ExampleTest.php"
     }
 }
