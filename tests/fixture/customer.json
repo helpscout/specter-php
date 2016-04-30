@@ -1,0 +1,17 @@
+{
+  "__specter": "Sample customer record",
+  "id": "@randomDigitNotNull@",
+  "fname": "@firstName@",
+  "lname": "@lastName@",
+  "company": "@company@",
+  "jobTitle": "@jobTitle@",
+  "background": "@catchPhrase@",
+  "notes": "@paragraph@",
+  "address": {
+    "city": "@city@",
+    "state": "@stateAbbr@",
+    "zip": "@postcode@",
+    "country": "@country@"
+  },
+  "emails": ["@companyEmail@", "@freeEmail@", "@email@" ]
+}
