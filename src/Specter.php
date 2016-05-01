@@ -18,7 +18,7 @@ use InvalidArgumentException;
 class Specter
 {
     /**
-     * JSON fixture trigger
+     * JSON fixture trigger to locate the faker producers.
      *
      * values of `@firstName@` will be processed by default
      *
@@ -27,6 +27,8 @@ class Specter
     protected $trigger = '@';
 
     /**
+     * Used to generate the actual random data for the spec.
+     *
      * @var Faker\Generator
      */
     protected $faker;
