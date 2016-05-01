@@ -31,6 +31,9 @@
         "squizlabs/php_codesniffer": "^2.6"
     },
     "scripts": {
+        "post-install-cmd": [
+            "bash contrib/setup.sh"
+        ],
         "test": [
             "@lint",
             "@sniff",
