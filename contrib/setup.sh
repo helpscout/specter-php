@@ -4,7 +4,7 @@
 # ==============================================================================
 # Setup our pre-commit hooks if the tool is available
 #
-command -v pre-commisdt >/dev/null 2>&1 || {
+command -v pre-commit >/dev/null 2>&1 || {
     echo ""
     echo "We'd like for you to consider running our pre-commit hooks. To do so, you'll"
     echo "need to install the pre-commit tool from http://pre-commit.com/"
