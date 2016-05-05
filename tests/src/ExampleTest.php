@@ -81,7 +81,7 @@ class WebTestClient
      * a string.
      *
      * @param $url
-     * @return \Slim\Http\Response
+     * @return GuzzleHttp\Psr7\Response
      */
     public function get($url)
     {

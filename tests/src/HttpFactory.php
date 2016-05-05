@@ -8,15 +8,9 @@
 namespace HelpScout\Specter\Tests;
 
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Body;
-use Slim\Http\Environment;
-use Slim\Http\Headers;
-use Slim\Http\Request;
-use Slim\Http\RequestBody;
-use Slim\Http\Response;
-use Slim\Http\UploadedFile;
-use Slim\Http\Uri;
+use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * Trait HttpFactory
@@ -33,7 +27,7 @@ trait HttpFactory
     public function getCallableMiddleware()
     {
         return function (
-            ServerRequestInterface $request,
+            RequestInterface $request,
             ResponseInterface $response
         ) {
             return $response->getBody()->getContents();
@@ -66,34 +60,26 @@ trait HttpFactory
      */
     public function responseFactory($content, $code = 200)
     {
-        $headers = new Headers();
-        $body    = new Body($this->streamFactory($content));
-
-        return new Response($code, $headers, $body);
+        $headers = [];
+        return new Response($code, $headers, $content);
     }
 
     /**
      * Create a new PSR7 Request Object.
      *
      * @return Request
+     * @throws \InvalidArgumentException
      */
     public function requestFactory()
     {
-        $env           = Environment::mock();
-        $uri           = Uri::createFromString('https://example.com/foo/bar?abc=123');
-        $headers       = Headers::createFromEnvironment($env);
-        $cookies       = ['user' => 'john', 'id' => '123'];
-        $serverParams  = $env->all();
-        $body          = new RequestBody();
-        $uploadedFiles = UploadedFile::createFromEnvironment($env);
+        $uri     = 'https://example.com/foo/bar?abc=123';
+        $headers = [];
+        $body    = '';
         $request = new Request(
             'GET',
             $uri,
             $headers,
-            $cookies,
-            $serverParams,
-            $body,
-            $uploadedFiles
+            $body
         );
 
         return $request;

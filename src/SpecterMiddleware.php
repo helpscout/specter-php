@@ -11,8 +11,8 @@ namespace HelpScout\Specter;
 
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Stream;
+use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\Psr7\Stream;
 
 /**
  * Class SpecterMiddleware
@@ -26,9 +26,9 @@ class SpecterMiddleware
      * The route should return json data of Specter format, and this middleware
      * will substitute fake data into it.
      *
-     * @param  ServerRequestInterface $request PSR7 request
-     * @param  ResponseInterface      $response PSR7 response
-     * @param  callable               $next Next middleware
+     * @param  RequestInterface  $request PSR7 request
+     * @param  ResponseInterface $response PSR7 response
+     * @param  callable          $next Next middleware
      *
      * @return ResponseInterface
      * @throws \InvalidArgumentException
@@ -36,7 +36,7 @@ class SpecterMiddleware
      * @throws \RuntimeException
      */
     public function __invoke(
-        ServerRequestInterface $request,
+        RequestInterface $request,
         ResponseInterface $response,
         callable $next
     ) {
