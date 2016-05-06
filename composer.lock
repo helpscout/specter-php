@@ -756,12 +756,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/helpscout/php-standards.git",
-                "reference": "47a053c28a2b215b8ef7e96dea710a5ba1a1724b"
+                "reference": "83746de557e78db44c121187e0f2d4f410c510a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helpscout/php-standards/zipball/47a053c28a2b215b8ef7e96dea710a5ba1a1724b",
-                "reference": "47a053c28a2b215b8ef7e96dea710a5ba1a1724b",
+                "url": "https://api.github.com/repos/helpscout/php-standards/zipball/83746de557e78db44c121187e0f2d4f410c510a6",
+                "reference": "83746de557e78db44c121187e0f2d4f410c510a6",
                 "shasum": ""
             },
             "type": "library",
@@ -782,7 +782,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-05-06 16:42:09"
+            "time": "2016-05-06 16:58:39"
         },
         {
             "name": "jakub-onderka/php-console-color",
