@@ -7,13 +7,16 @@
  */
 namespace HelpScout\Specter\Tests;
 
+use Closure;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use RuntimeException;
 
 /**
  * Trait HttpFactory
+ *
  * @package HelpScout\Specter\Tests
  */
 trait HttpFactory
@@ -21,8 +24,8 @@ trait HttpFactory
     /**
      * Create a final step in a mock middleware stack to access the body.
      *
-     * @return \Closure
-     * @throws \RuntimeException
+     * @return Closure
+     * @throws RuntimeException
      */
     public function getCallableMiddleware()
     {
@@ -39,6 +42,7 @@ trait HttpFactory
      *
      * @param string $text
      * @param string $mode
+     *
      * @return resource
      */
     public function streamFactory($text, $mode = 'r+')
@@ -55,6 +59,7 @@ trait HttpFactory
      *
      * @param string  $content
      * @param integer $code
+     *
      * @return Response
      * @throws \InvalidArgumentException
      */

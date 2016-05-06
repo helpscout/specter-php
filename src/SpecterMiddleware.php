@@ -9,13 +9,16 @@
  */
 namespace HelpScout\Specter;
 
+use InvalidArgumentException;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7\Stream;
+use RuntimeException;
 
 /**
  * Class SpecterMiddleware
+ *
  * @package HelpScout\Specter
  */
 class SpecterMiddleware
@@ -26,14 +29,13 @@ class SpecterMiddleware
      * The route should return json data of Specter format, and this middleware
      * will substitute fake data into it.
      *
-     * @param  RequestInterface  $request PSR7 request
-     * @param  ResponseInterface $response PSR7 response
-     * @param  callable          $next Next middleware
+     * @param RequestInterface  $request  PSR7 request
+     * @param ResponseInterface $response PSR7 response
+     * @param callable          $next     Next middleware
      *
      * @return ResponseInterface
-     * @throws \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \RuntimeException
+     * @throws InvalidArgumentException
+     * @throws LogicException
      */
     public function __invoke(
         RequestInterface $request,
@@ -59,7 +61,7 @@ class SpecterMiddleware
         $stream = fopen('php://temp', 'r+');
         fwrite($stream, json_encode($json));
         rewind($stream);
-        $body = new Stream($stream);
+        $body               = new Stream($stream);
         $middlewareResponse = $response->withBody($body);
 
         // Return an immutable body in a cloned $request object

@@ -13,6 +13,7 @@ use InvalidArgumentException;
 
 /**
  * Class Specter
+ *
  * @package HelpScout\Specter
  */
 class Specter
@@ -20,7 +21,7 @@ class Specter
     /**
      * JSON fixture trigger to locate the faker producers.
      *
-     * values of `@firstName@` will be processed by default
+     * Values of `@firstName@` will be processed by default
      *
      * @var string
      */
@@ -38,7 +39,9 @@ class Specter
      *
      * Initialize with a seed for repeatable fixture data
      *
-     * @param int $seed Faker seed value
+     * @param integer $seed Faker seed value
+     *
+     * @return Specter
      */
     public function __construct($seed = 0)
     {
@@ -52,6 +55,7 @@ class Specter
      * Replace fixture patterns with Faker data
      *
      * @param array $fixture
+     *
      * @return array json with random data inserted
      */
     public function substituteMockData(array $fixture)

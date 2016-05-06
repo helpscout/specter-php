@@ -13,6 +13,7 @@ use PHPUnit_Framework_TestCase;
 
 /**
  * Class SpecterTest
+ *
  * @package HelpScout\Specter\Tests
  */
 class SpecterTest extends PHPUnit_Framework_TestCase
@@ -21,6 +22,8 @@ class SpecterTest extends PHPUnit_Framework_TestCase
 
     /**
      * A quick health check to make sure we're namespaced and lint free
+     *
+     * @return void
      */
     public function testSpecterCanInitSpecter()
     {
@@ -39,6 +42,8 @@ class SpecterTest extends PHPUnit_Framework_TestCase
      *       order that we find them in the fixture file. We start with the
      *       same `$seed` and we have to march in lockstep with the Specter
      *       producer so that the values are generated in the same order.
+     *
+     * @return void
      */
     public function testSpecterCanProcessJson()
     {

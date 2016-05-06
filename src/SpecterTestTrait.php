@@ -19,17 +19,21 @@ use Faker\Generator;
 use InvalidArgumentException;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
+use RuntimeException;
 
 /**
  * Trait SpecterTestTrait
- * @package HelpScout\Specter
  *
  * -----------------------------------------------------------------------------
  * Place a reference to PHPUnit assertions to quiet several IDE warnings.
  * -----------------------------------------------------------------------------
+ * @codingStandardsIgnoreStart
  * @method static void assertEquals() assertEquals($expected, $actual, $message = '', $delta = 0.0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false) assert equals
  * @method static void assertTrue()   assertTrue($condition, $message = '') assert true
  * @method static void fail()         fail($other, $description = '') fail a test
+ * @codingStandardsIgnoreEnd
+ *
+ * @package HelpScout\Specter
  */
 trait SpecterTestTrait
 {
@@ -52,7 +56,7 @@ trait SpecterTestTrait
     /**
      * JSON fixture trigger
      *
-     * values of `@firstName@` will be processed by default
+     * Values of `@firstName@` will be processed by default
      *
      * @var string
      */
@@ -68,13 +72,17 @@ trait SpecterTestTrait
     /**
      * Assert that a response matches a spec file and status code
      *
-     * @link  https://github.com/php-fig/http-message/blob/master/src/ResponseInterface.php
+     * For more about the PSR7 interfaces, please see:
+     *  https://git.io/psr7_ResponseInterface
      *
      * @param ResponseInterface $response   psr7 response object
      * @param string            $filename   path to fixture file (no extension)
      * @param string            $mimeType   fixture file extension and mime type
-     * @param int               $statusCode expected status code of response
-     * @throws \LogicException
+     * @param integer           $statusCode expected status code of response
+     *
+     * @return void
+     * @throws RuntimeException
+     * @throws LogicException
      */
     static public function assertResponse(
         ResponseInterface $response,
@@ -91,9 +99,13 @@ trait SpecterTestTrait
      *
      * @param ResponseInterface $response   psr7 response object
      * @param integer           $statusCode expected status code
+     *
+     * @return void
      */
-    static public function assertResponseCode(ResponseInterface $response, $statusCode)
-    {
+    static public function assertResponseCode(
+        ResponseInterface $response,
+        $statusCode
+    ) {
         self::assertEquals(
             $statusCode,
             $response->getStatusCode(),
@@ -115,8 +127,9 @@ trait SpecterTestTrait
      * @param string|resource   $filename path within `$fixtureFolder`
      * @param string            $mimeType file extension and mime type
      *
-     * @throws \LogicException
-     * @throws \RuntimeException
+     * @throws LogicException
+     * @throws RuntimeException
+     * @return void
      */
     static public function assertResponseContent(
         ResponseInterface $response,
@@ -124,8 +137,8 @@ trait SpecterTestTrait
         $mimeType = 'json'
     ) {
         self::$faker = Faker\Factory::create();
-        $spec   = self::getFixtureText($filename, $mimeType);
-        $actual = $response->getBody()->getContents();
+        $spec        = self::getFixtureText($filename, $mimeType);
+        $actual      = $response->getBody()->getContents();
 
         // Check that the spec and actual are both valid json
         $test = json_decode($spec);
@@ -157,8 +170,10 @@ trait SpecterTestTrait
         // Display the output in a better format by using a diffing tool
         // We convert to strings to try to make the output more accurate
         $difference   = $matcher->getError().PHP_EOL;
-        $specString   = explode(PHP_EOL, json_encode($spec, JSON_PRETTY_PRINT));
-        $actualString = explode(PHP_EOL, json_encode($actual, JSON_PRETTY_PRINT));
+        $specString   = json_encode($spec, JSON_PRETTY_PRINT);
+        $specString   = explode(PHP_EOL, $specString);
+        $actualString = json_encode($actual, JSON_PRETTY_PRINT);
+        $actualString = explode(PHP_EOL, $actualString);
         $diffOptions  = [];
         $diff         = new Diff($specString, $actualString, $diffOptions);
         $renderer     = new Diff_Renderer_Text_Unified();
@@ -193,7 +208,7 @@ trait SpecterTestTrait
             }
 
             // Use the Faker producer for this data type if available.
-            $producer = trim($jsonValue, self::$trigger);
+            $producer       = trim($jsonValue, self::$trigger);
             $spec[$jsonKey] = self::getMatcherType($producer);
         }
 
@@ -203,12 +218,10 @@ trait SpecterTestTrait
     /**
      * Map a faker provider to the correct matcher string
      *
-     * return string matcher type
-     *
      * @param string $producer faker producer name
      *
-     * @return string
-     * @throws \LogicException
+     * @return string string matcher type
+     * @throws LogicException
      */
     static private function getMatcherType($producer)
     {
@@ -229,8 +242,9 @@ trait SpecterTestTrait
      *
      * @param string|resource $filename resource or filename in $fixtureFolder
      * @param string          $mimeType file extension
+     *
      * @return string fixture data as json string
-     * @throws \LogicException
+     * @throws LogicException
      */
     static private function getFixtureText($filename, $mimeType)
     {
@@ -270,6 +284,8 @@ trait SpecterTestTrait
      * Set the API fixture data path
      *
      * @param string $path to api fixture data where json
+     *
+     * @return void
      */
     static public function setFixtureFolder($path)
     {

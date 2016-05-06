@@ -14,6 +14,7 @@ use PHPUnit_Framework_TestCase;
 
 /**
  * Class ExampleTest
+ *
  * @package HelpScout\Specter\Tests
  */
 class ExampleTest extends PHPUnit_Framework_TestCase
@@ -29,6 +30,8 @@ class ExampleTest extends PHPUnit_Framework_TestCase
 
     /**
      * Create our testing client that will execute routes
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -38,6 +41,8 @@ class ExampleTest extends PHPUnit_Framework_TestCase
 
     /**
      * Clean up after the tests
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -48,6 +53,7 @@ class ExampleTest extends PHPUnit_Framework_TestCase
     /**
      * Test that our customer api route returns a appropriate response
      *
+     * @return void
      * @throws \LogicException
      * @throws \RuntimeException
      */

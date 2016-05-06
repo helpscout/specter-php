@@ -11,11 +11,13 @@ namespace HelpScout\Specter\Tests;
 
 use Exception;
 use HelpScout\Specter\SpecterTestTrait;
+use InvalidArgumentException;
 use PHPUnit_Framework_ExpectationFailedException;
 use PHPUnit_Framework_TestCase;
 
 /**
  * Class SpecterTestTraitTest
+ *
  * @package HelpScout\Specter\Tests
  */
 class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
@@ -24,7 +26,9 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
 
     /**
      * Assert that we pass if the response code is incorrect
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException
+     * @return void
      */
     public function testTraitPassesMatchingResponseCode()
     {
@@ -35,8 +39,10 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
 
     /**
      * Assert that we fail if the response code is incorrect
+     *
+     * @return            void
      * @expectedException PHPUnit_Framework_ExpectationFailedException
-     * @throws \InvalidArgumentException
+     * @throws            InvalidArgumentException
      */
     public function testTraitFailsIncorrectResponseCode()
     {
@@ -48,6 +54,8 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
 
     /**
      * Assert that we fail if a property is missing from the json object
+     *
+     * @return void
      * @throws \LogicException
      */
     public function testTraitFailsForMissingJsonProperty()
@@ -81,6 +89,8 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
 
     /**
      * Assert that we fail if a property is of the incorrect type
+     *
+     * @return void
      */
     public function testTraitFailsForIncorrectJsonPropertyType()
     {
@@ -112,6 +122,8 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
 
     /**
      * Assert that we fail if a property is of the incorrect type
+     *
+     * @return void
      */
     public function testTraitFailsForExpandedPatterns()
     {

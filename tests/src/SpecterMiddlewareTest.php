@@ -14,6 +14,7 @@ use HelpScout\Specter\SpecterMiddleware;
 use InvalidArgumentException;
 use LogicException;
 use PHPUnit_Framework_TestCase;
+use RuntimeException;
 
 class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
 {
@@ -25,8 +26,9 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
      * We run the middleware with a seed header so that we can assert that the
      * response matches the expectation.
      *
+     * @return void
      * @throws InvalidArgumentException
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function testMiddlewareCanProcessSimpleJson()
     {
@@ -36,7 +38,8 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
         $request    = $this->requestFactory()->withHeader('SpecterSeed', $seed);
         $response   = $this->responseFactory($body);
         $middleware = new SpecterMiddleware();
-        $result     = $middleware($request, $response, $this->getCallableMiddleware());
+        $callable   = $this->getCallableMiddleware();
+        $result     = $middleware($request, $response, $callable);
         $json       = json_decode($result, true);
 
         self::assertSame($expected, $json['name'], 'Incorrect json value');
@@ -45,9 +48,10 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
     /**
      * Assert that the correct exception is thrown for invalid Specter JSON.
      *
+     * @return            void
      * @expectedException LogicException
-     * @throws \InvalidArgumentException
-     * @throws \RuntimeException
+     * @throws            InvalidArgumentException
+     * @throws            RuntimeException
      */
     public function testMiddlewareFailsOnInvalidJson()
     {
@@ -61,8 +65,9 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
     /**
      * Assert that the correct output is sent for invalid Specter selector.
      *
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
+     * @return void
+     * @throws RuntimeException
+     * @throws InvalidArgumentException
      */
     public function testMiddlewareFailsOnInvalidProviderJson()
     {
@@ -70,7 +75,8 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
         $request    = $this->requestFactory();
         $response   = $this->responseFactory($body);
         $middleware = new SpecterMiddleware();
-        $result     = $middleware($request, $response, $this->getCallableMiddleware());
+        $callable   = $this->getCallableMiddleware();
+        $result     = $middleware($request, $response, $callable);
         $json       = json_decode($result, true);
 
         self::assertStringStartsWith(

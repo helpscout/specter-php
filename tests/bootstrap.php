@@ -7,7 +7,6 @@
  */
 
 require dirname(__DIR__).'/vendor/autoload.php';
-
-define('TEST_FIXTURE_FOLDER', __DIR__.'/fixture');
+require __DIR__.'/constants.php';
 
 /* End of file bootstrap.php */

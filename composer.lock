@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "218de33ddcf1dec27d60260d990dffb6",
-    "content-hash": "8b989d777c71911bbc2b28db09c0e5d2",
+    "hash": "569c0ff43c45d3ec23bfcee1261e6e71",
+    "content-hash": "74b7b898851d8b91a9e7e3b8921a86a7",
     "packages": [
         {
             "name": "coduo/php-matcher",
@@ -749,6 +749,40 @@
                 "instantiate"
             ],
             "time": "2016-03-31 10:24:22"
+        },
+        {
+            "name": "helpscout/php-standards",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/helpscout/php-standards.git",
+                "reference": "8226372c28cfb709c3f2d740e4b063e1cf40753e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/helpscout/php-standards/zipball/8226372c28cfb709c3f2d740e4b063e1cf40753e",
+                "reference": "8226372c28cfb709c3f2d740e4b063e1cf40753e",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Developers",
+                    "email": "developer@helpscout.net"
+                }
+            ],
+            "description": "Help Scout PHP Code Standards",
+            "homepage": "http://developer.helpscout.net/",
+            "keywords": [
+                "Help Scout",
+                "phpcs",
+                "standards"
+            ],
+            "time": "2016-05-06 15:55:57"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1928,12 +1962,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "f4e18d4b3e5d96bce95ca5367159f790ccab3b73"
+                "reference": "5c2a8a1e88a80697b5975f7429e0673ae3e5b250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f4e18d4b3e5d96bce95ca5367159f790ccab3b73",
-                "reference": "f4e18d4b3e5d96bce95ca5367159f790ccab3b73",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5c2a8a1e88a80697b5975f7429e0673ae3e5b250",
+                "reference": "5c2a8a1e88a80697b5975f7429e0673ae3e5b250",
                 "shasum": ""
             },
             "require": {
@@ -1998,7 +2032,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-04-27 01:50:25"
+            "time": "2016-05-06 00:53:41"
         },
         {
             "name": "symfony/yaml",
@@ -2052,7 +2086,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "helpscout/php-standards": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -11,6 +11,7 @@ use Faker;
 
 /**
  * Trait FakerFactory
+ *
  * @package HelpScout\Specter\Tests\Helpers
  */
 trait FakerFactory
@@ -18,7 +19,8 @@ trait FakerFactory
     /**
      * Create a faker instance with an optional seed.
      *
-     * @param int $seed random generator seed for repeatable results
+     * @param integer $seed random generator seed for repeatable results
+     *
      * @return Faker\Generator
      */
     public function fakerFactory($seed = 0)
