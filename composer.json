@@ -4,12 +4,21 @@
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
+    "keywords": [
+      "psr7",
+      "middleware",
+      "fixture",
+      "Help Scout"
+    ],
     "authors": [
         {
             "name": "Platform Group",
             "email": "developer@helpscout.net"
         }
     ],
+    "support": {
+      "issues": "https://github.com/helpscout/php-standards/issues"
+    },
     "autoload": {
         "psr-4": { "HelpScout\\Specter\\": "src/" }
     },
