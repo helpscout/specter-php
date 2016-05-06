@@ -20,10 +20,15 @@
       "issues": "https://github.com/helpscout/php-standards/issues"
     },
     "autoload": {
-        "psr-4": { "HelpScout\\Specter\\": "src/" }
+        "psr-4": {
+            "HelpScout\\Specter\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "HelpScout\\Specter\\Tests\\": "tests/src" }
+        "psr-4": {
+            "HelpScout\\Specter\\Tests\\": "tests/src",
+            "HelpScout\\Specter\\Tests\\Helpers\\": "tests/src/helpers"
+        }
     },
     "require": {
         "coduo/php-matcher": "^2.0",

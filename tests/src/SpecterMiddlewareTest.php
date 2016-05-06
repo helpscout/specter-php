@@ -18,7 +18,7 @@ use RuntimeException;
 
 class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
 {
-    use HttpFactory, FakerFactory;
+    use Helpers\HttpFactory, Helpers\FakerFactory;
 
     /**
      * Assert that we process a Specter JSON file to random data.

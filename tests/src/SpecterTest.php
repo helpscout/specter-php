@@ -18,7 +18,7 @@ use PHPUnit_Framework_TestCase;
  */
 class SpecterTest extends PHPUnit_Framework_TestCase
 {
-    use FakerFactory;
+    use Helpers\FakerFactory;
 
     /**
      * A quick health check to make sure we're namespaced and lint free

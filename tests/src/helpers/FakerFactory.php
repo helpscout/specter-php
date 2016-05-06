@@ -5,7 +5,7 @@
  * @author    Platform Team <developer@helpscout.net>
  * @copyright 2016 Help Scout
  */
-namespace HelpScout\Specter\Tests;
+namespace HelpScout\Specter\Tests\Helpers;
 
 use Faker;
 
