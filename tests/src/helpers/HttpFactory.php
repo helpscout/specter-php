@@ -33,7 +33,7 @@ trait HttpFactory
             RequestInterface $request,
             ResponseInterface $response
         ) {
-            return $response->getBody()->getContents();
+            return $response;
         };
     }
 

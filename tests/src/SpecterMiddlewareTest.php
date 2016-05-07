@@ -32,6 +32,31 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function testMiddlewareCanProcessSimpleJson()
     {
+        $body       = '{"__specter": "", "name":"@name@"}';
+        $seed       = 3;
+        $expected   = $this->fakerFactory($seed)->name;
+        $request    = $this->requestFactory()->withHeader('SpecterSeed', $seed);
+        $response   = $this->responseFactory($body);
+        $middleware = new SpecterMiddleware();
+        $callable   = $this->getCallableMiddleware();
+        $response   = $middleware($request, $response, $callable);
+        $json       = json_decode((string) $response->getBody(), true);
+
+        self::assertSame($expected, $json['name'], 'Incorrect json value');
+    }
+
+    /**
+     * Assert that we ignore a file without the __specter property trigger
+     *
+     * We run the middleware with a seed header so that we can assert that the
+     * response matches the expectation.
+     *
+     * @return void
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
+     */
+    public function testMiddlewareCanIgnoreNonSpecterFile()
+    {
         $body       = '{"name":"@name@"}';
         $seed       = 3;
         $expected   = $this->fakerFactory($seed)->name;
@@ -39,10 +64,13 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
         $response   = $this->responseFactory($body);
         $middleware = new SpecterMiddleware();
         $callable   = $this->getCallableMiddleware();
-        $result     = $middleware($request, $response, $callable);
-        $json       = json_decode($result, true);
+        $response   = $middleware($request, $response, $callable);
 
-        self::assertSame($expected, $json['name'], 'Incorrect json value');
+        self::assertSame(
+            $body,
+            (string) $response->getBody(),
+            'Specter did not ignore a non-specter file'
+        );
     }
 
     /**
@@ -55,7 +83,7 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function testMiddlewareFailsOnInvalidJson()
     {
-        $body       = '{"name":"@name@"';
+        $body       = '{"__specter": "", "name":"@name@"';
         $request    = $this->requestFactory();
         $response   = $this->responseFactory($body);
         $middleware = new SpecterMiddleware();
@@ -71,13 +99,13 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function testMiddlewareFailsOnInvalidProviderJson()
     {
-        $body       = '{"name":"@nameButMaybeMisspelled@"}';
+        $body       = '{"__specter": "", "name":"@nameButMaybeMisspelled@"}';
         $request    = $this->requestFactory();
         $response   = $this->responseFactory($body);
         $middleware = new SpecterMiddleware();
         $callable   = $this->getCallableMiddleware();
-        $result     = $middleware($request, $response, $callable);
-        $json       = json_decode($result, true);
+        $response   = $middleware($request, $response, $callable);
+        $json       = json_decode((string) $response->getBody(), true);
 
         self::assertStringStartsWith(
             'Unsupported formatter',

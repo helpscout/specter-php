@@ -24,6 +24,13 @@ use RuntimeException;
 class SpecterMiddleware
 {
     /**
+     * JSON must have this property to trigger processing
+     *
+     * @var string
+     */
+    private $specterTrigger = '__specter';
+
+    /**
      * Specter JSON Fake Data
      *
      * The route should return json data of Specter format, and this middleware
@@ -42,13 +49,22 @@ class SpecterMiddleware
         ResponseInterface $response,
         callable $next
     ) {
+        // We are a post processor
+        $response = $next($request, $response);
+
         // Decode the json returned by the route and prepare it for mock data
         // processing.
-        $fixture = @json_decode($response->getBody(), true);
+        $fixture = @json_decode($response->getBody()->getContents(), true);
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new LogicException(
                 'Failed to parse json string. Error: '.json_last_error_msg()
             );
+        }
+
+        // We will not process files without the Specter trigger, and instead
+        // return an unchanged response.
+        if (!array_key_exists($this->specterTrigger, $fixture)) {
+            return $response;
         }
 
         // Process the fixture data, using a seed in case the designer wants
@@ -61,11 +77,10 @@ class SpecterMiddleware
         $stream = fopen('php://temp', 'r+');
         fwrite($stream, json_encode($json));
         rewind($stream);
-        $body               = new Stream($stream);
-        $middlewareResponse = $response->withBody($body);
+        $body = new Stream($stream);
 
         // Return an immutable body in a cloned $request object
-        return $next($request, $middlewareResponse);
+        return $response->withBody($body);
     }
 }
 
