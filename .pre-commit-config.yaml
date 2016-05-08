@@ -15,7 +15,12 @@
   - id: php-unit
   - id: php-cs
     files: \.(php)$
-    args: ['-p', '--standard=vendor/helpscout/php-standards/HelpScout', '--warning-severity=0']
+    args: [
+      '-p',
+      '--standard=vendor/helpscout/php-standards/HelpScout',
+      '--warning-severity=0',
+      '--ignore=examples'
+    ]
 - repo: git://github.com/Lucas-C/pre-commit-hooks
   sha: b600798f8dacfcc29862e3d58367b89d3090c6a7
   hooks:
