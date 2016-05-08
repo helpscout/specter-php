@@ -13,8 +13,7 @@ use InvalidArgumentException;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\RequestInterface;
-use GuzzleHttp\Psr7\Stream;
-use RuntimeException;
+use GuzzleHttp\Psr7;
 
 /**
  * Class SpecterMiddleware
@@ -74,13 +73,11 @@ class SpecterMiddleware
         $json    = $specter->substituteMockData($fixture);
 
         // Prepare a fresh body stream
-        $stream = fopen('php://temp', 'r+');
-        fwrite($stream, json_encode($json));
-        rewind($stream);
-        $body = new Stream($stream);
+        $data   = json_encode($json);
+        $stream = Psr7\stream_for($data);
 
         // Return an immutable body in a cloned $request object
-        return $response->withBody($body);
+        return $response->withBody($stream);
     }
 }
 
