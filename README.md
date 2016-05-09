@@ -56,7 +56,7 @@ Specter JSON file that defines your new endpoint. This is a Specter JSON file:
 
 Add a route to return it and use `SpecterMiddleware` to process it:
 ```php
-$app->get('/customer/{id}', function ($request, $response, $args) {
+$app->get('/api/v1/customer/{id}', function ($request, $response, $args) {
     return $response->withJson(getFixture('customer'));
 })->add(new \HelpScout\Specter\SpecterMiddleware);
 ```
