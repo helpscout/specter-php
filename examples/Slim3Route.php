@@ -5,6 +5,9 @@
  * An example of using the SpecterMiddleware with a API route. Note that the
  * customers route simple returns the raw Specter formatted JSON and the
  * middleware transforms it into the fixture data.
+ *
+ * Note: Specter requires Slim 3.3 or newer, after a fix for seeking on temp
+ *       php streams. See: https://github.com/slimphp/Slim/issues/1434
  */
 
 /**
@@ -22,11 +25,18 @@ function getFixture($name)
     return json_decode($data);
 }
 
-
+/**
+ * An example route group for API endpoints
+ */
 $app->group('/api/v1', function () use ($app) {
 
-    $app->get('/customer', function ($request, $response) {
+    /**
+     * An example customer endpoint, returning a random customer.
+     */
+    $app->get('/customer/{id}', function ($request, $response, $args) {
         return $response->withJson(getFixture('customer'));
     });
 
 })->add(new \HelpScout\Specter\SpecterMiddleware);
+
+/* End of file Slim3Route.php */
