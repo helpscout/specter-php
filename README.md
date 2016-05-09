@@ -61,7 +61,8 @@ $app->get('/api/v1/customer/{id}', function ($request, $response, $args) {
 })->add(new \HelpScout\Specter\SpecterMiddleware);
 ```
 
-Receive random data from your endpoint that fulfills the JSON:
+Receive random data from your endpoint that fulfills the JSON and use it to
+build out your interface:
 ```json
 {
    "__specter":"Sample customer record",
