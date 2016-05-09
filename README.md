@@ -23,13 +23,81 @@ front end team uses the data from it, and the platform team tests with it.
 
 ## Installation
 
-This project is not yet published on Packagist.
+This is available through composer as `helpscout/specter`.
 
 ## Contributing
 1. `git clone`
 2. `composer install`
 3. It will prompt you to please install our commit hooks driven by
    [pre-commit][pre-commit].
+
+## Demonstration
+
+Work together among your development teams to spec a new endpoint and create a
+Specter JSON file that defines your new endpoint. This is a Specter JSON file:
+```json
+{
+  "__specter": "Sample customer record",
+  "id": "@randomDigitNotNull@",
+  "fname": "@firstName@",
+  "lname": "@lastName@",
+  "company": "@company@",
+  "jobTitle": "@jobTitle@",
+  "background": "@catchPhrase@",
+  "address": {
+    "city": "@city@",
+    "state": "@stateAbbr@",
+    "zip": "@postcode@",
+    "country": "@country@"
+  },
+  "emails": ["@companyEmail@", "@freeEmail@", "@email@" ]
+}
+```
+
+Add a route to return it and use `SpecterMiddleware` to process it:
+```php
+$app->get('/customer/{id}', function ($request, $response, $args) {
+    return $response->withJson(getFixture('customer'));
+})->add(new \HelpScout\Specter\SpecterMiddleware);
+```
+
+Receive random data from your endpoint that fulfills the JSON:
+```json
+{
+   "__specter":"Sample customer record",
+   "id":6,
+   "fname":"Glenda",
+   "lname":"Trantow",
+   "company":"Kerluke, Rodriguez and Wisoky",
+   "jobTitle":"Power Generating Plant Operator",
+   "background":"Configurable multi-state standardization",
+   "address":{
+      "city":"Georgiannachester",
+      "state":"TX",
+      "zip":"89501",
+      "country":"Afghanistan"
+   },
+   "emails":[
+      "dward@friesen.org",
+      "nwisozk@gmail.com",
+      "juliet.dooley@yahoo.com"
+   ]
+}
+```
+
+Write a unit test for the endpoint to confirm that it's meeting the spec, and
+then implement the endpoint for real:
+```php
+use SpecterTestTrait;
+
+public function testCustomerRouteMeetsSpec()
+{
+    self::assertResponseContent(
+        $this->client->get('/api/v1/customer/37'),
+        'customer'
+    );
+}
+```
 
 
 [spec]: https://raw.githubusercontent.com/helpscout/specter/master/tests/fixture/customer.json
