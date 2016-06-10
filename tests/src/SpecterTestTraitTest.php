@@ -10,7 +10,7 @@
 namespace HelpScout\Specter\Tests;
 
 use Exception;
-use HelpScout\Specter\SpecterTestTrait;
+use HelpScout\Specter\Testing\SpecterTestTrait;
 use InvalidArgumentException;
 use PHPUnit_Framework_ExpectationFailedException;
 use PHPUnit_Framework_TestCase;
@@ -22,7 +22,7 @@ use PHPUnit_Framework_TestCase;
  */
 class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
 {
-    use Helpers\HttpFactory, Helpers\FakerFactory, SpecterTestTrait;
+    use Helpers\PSR7HttpFactory, Helpers\FakerFactory, SpecterTestTrait;
 
     /**
      * Assert that we pass if the response code is incorrect

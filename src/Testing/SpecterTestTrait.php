@@ -8,7 +8,7 @@
  * @author    Platform Team <developer@helpscout.net>
  * @copyright 2016 Help Scout
  */
-namespace HelpScout\Specter;
+namespace HelpScout\Specter\Testing;
 
 use Coduo\PHPMatcher\Factory\SimpleFactory;
 use Coduo\PHPMatcher\Matcher;

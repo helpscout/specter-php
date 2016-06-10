@@ -19,7 +19,7 @@ use RuntimeException;
  *
  * @package HelpScout\Specter\Tests
  */
-trait HttpFactory
+trait PSR7HttpFactory
 {
     /**
      * Create a final step in a mock middleware stack to access the body.

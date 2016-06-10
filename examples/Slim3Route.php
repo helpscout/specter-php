@@ -37,6 +37,6 @@ $app->group('/api/v1', function () use ($app) {
         return $response->withJson(getFixture('customer'));
     });
 
-})->add(new \HelpScout\Specter\SpecterMiddleware);
+})->add(new \HelpScout\Specter\Middleware\SpecterPsr7);
 
 /* End of file Slim3Route.php */

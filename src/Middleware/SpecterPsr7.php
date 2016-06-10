@@ -1,14 +1,15 @@
 <?php
 /**
- * Specter Middleware for JSON Mock Data responses
+ * Specter Psr7 Middleware for JSON Mock Data responses
  *
  * A route should return JSON data in the Specter format.
  *
  * @author    Platform Team <developer@helpscout.net>
  * @copyright 2016 Help Scout
  */
-namespace HelpScout\Specter;
+namespace HelpScout\Specter\Middleware;
 
+use HelpScout\Specter\Specter;
 use InvalidArgumentException;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
@@ -16,11 +17,9 @@ use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7;
 
 /**
- * Class SpecterMiddleware
- *
- * @package HelpScout\Specter
+ * Class SpecterPsr7
  */
-class SpecterMiddleware
+class SpecterPsr7
 {
     /**
      * JSON must have this property to trigger processing
@@ -48,7 +47,11 @@ class SpecterMiddleware
         ResponseInterface $response,
         callable $next
     ) {
-        // We are a post processor
+        /**
+         * We are a post processor, and so we run the $next immediately
+         *
+         * @var ResponseInterface $response
+         */
         $response = $next($request, $response);
 
         // Decode the json returned by the route and prepare it for mock data
@@ -81,4 +84,4 @@ class SpecterMiddleware
     }
 }
 
-/* End of file SpecterMiddleware.php */
+/* End of file SpecterPsr7.php */

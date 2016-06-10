@@ -1,24 +1,18 @@
 <?php
-/**
- * Specter Middleware Test
- *
- * This confirms the behavior of the middleware by using the Slim helpers. It
- * does not use the SpecterTestTrait, so that it may be tested separately.
- *
- * @author    Platform Team <developer@helpscout.net>
- * @copyright 2016 Help Scout
- */
 namespace HelpScout\Specter\Tests;
 
-use HelpScout\Specter\SpecterMiddleware;
+use HelpScout\Specter\Middleware\SpecterIlluminate;
+use HelpScout\Specter\Tests\Helpers\FakerFactory;
+use HelpScout\Specter\Tests\Helpers\IlluminateHttpFactory;
 use InvalidArgumentException;
 use LogicException;
 use PHPUnit_Framework_TestCase;
 use RuntimeException;
 
-class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
+class IlluminateMiddlewareTest extends PHPUnit_Framework_TestCase implements SpecterMiddlewareTestInterface
 {
-    use Helpers\HttpFactory, Helpers\FakerFactory;
+    use FakerFactory;
+    use IlluminateHttpFactory;
 
     /**
      * Assert that we process a Specter JSON file to random data.
@@ -32,15 +26,18 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function testMiddlewareCanProcessSimpleJson()
     {
-        $body       = '{"__specter": "", "name":"@name@"}';
-        $seed       = 3;
-        $expected   = $this->fakerFactory($seed)->name;
-        $request    = $this->requestFactory()->withHeader('SpecterSeed', $seed);
+        $body     = '{"__specter": "", "name":"@name@"}';
+        $seed     = 3;
+        $expected = $this->fakerFactory($seed)->name;
+        $request  = $this->requestFactory();
+
+        $request->headers->set('SpecterSeed', $seed);
+
         $response   = $this->responseFactory($body);
-        $middleware = new SpecterMiddleware();
-        $callable   = $this->getCallableMiddleware();
-        $response   = $middleware($request, $response, $callable);
-        $json       = json_decode((string) $response->getBody(), true);
+        $middleware = new SpecterIlluminate;
+        $callable   = $this->getCallableMiddleware($response);
+        $response   = $middleware->handle($request, $callable);
+        $json       = json_decode((string) $response->content(), true);
 
         self::assertSame($expected, $json['name'], 'Incorrect json value');
     }
@@ -57,18 +54,20 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function testMiddlewareCanIgnoreNonSpecterFile()
     {
-        $body       = '{"name":"@name@"}';
-        $seed       = 3;
-        $expected   = $this->fakerFactory($seed)->name;
-        $request    = $this->requestFactory()->withHeader('SpecterSeed', $seed);
+        $body    = '{"name":"@name@"}';
+        $seed    = 3;
+        $request = $this->requestFactory();
+
+        $request->headers->set('SpecterSeed', $seed);
+
         $response   = $this->responseFactory($body);
-        $middleware = new SpecterMiddleware();
-        $callable   = $this->getCallableMiddleware();
-        $response   = $middleware($request, $response, $callable);
+        $middleware = new SpecterIlluminate;
+        $callable   = $this->getCallableMiddleware($response);
+        $response   = $middleware->handle($request, $callable);
 
         self::assertSame(
             $body,
-            (string) $response->getBody(),
+            (string) $response->getContent(),
             'Specter did not ignore a non-specter file'
         );
     }
@@ -86,8 +85,8 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
         $body       = '{"__specter": "", "name":"@name@"';
         $request    = $this->requestFactory();
         $response   = $this->responseFactory($body);
-        $middleware = new SpecterMiddleware();
-        $middleware($request, $response, $this->getCallableMiddleware());
+        $middleware = new SpecterIlluminate;
+        $middleware->handle($request, $this->getCallableMiddleware($response));
     }
 
     /**
@@ -102,10 +101,10 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
         $body       = '{"__specter": "", "name":"@nameButMaybeMisspelled@"}';
         $request    = $this->requestFactory();
         $response   = $this->responseFactory($body);
-        $middleware = new SpecterMiddleware();
-        $callable   = $this->getCallableMiddleware();
-        $response   = $middleware($request, $response, $callable);
-        $json       = json_decode((string) $response->getBody(), true);
+        $middleware = new SpecterIlluminate;
+        $callable   = $this->getCallableMiddleware($response);
+        $response   = $middleware->handle($request, $callable);
+        $json       = json_decode((string) $response->getContent(), true);
 
         self::assertStringStartsWith(
             'Unsupported formatter',
@@ -114,5 +113,3 @@ class SpecterMiddlewareTest extends PHPUnit_Framework_TestCase
         );
     }
 }
-
-/* End of file SpecterMiddlewareTest.php */
