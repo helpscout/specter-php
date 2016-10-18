@@ -1,0 +1,6 @@
+{
+  "__specter": "Example of using a random selection from a list",
+  "id": "@randomDigitNotNull@",
+  "name": "@name@",
+  "type": "@random|customer|vendor|owner@"
+}

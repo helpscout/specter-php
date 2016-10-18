@@ -7,7 +7,6 @@
  */
 namespace HelpScout\Specter\Tests;
 
-use Faker;
 use HelpScout\Specter\Specter;
 use PHPUnit_Framework_TestCase;
 
@@ -43,9 +42,10 @@ class SpecterTest extends PHPUnit_Framework_TestCase
      *       same `$seed` and we have to march in lockstep with the Specter
      *       producer so that the values are generated in the same order.
      *
+     * @test
      * @return void
      */
-    public function testSpecterCanProcessJson()
+    public function specterCanProcessJson()
     {
         $seed      = 5;
         $faker     = $this->fakerFactory($seed);
@@ -60,6 +60,26 @@ class SpecterTest extends PHPUnit_Framework_TestCase
         self::assertSame($id, $data['id']);
         self::assertSame($firstName, $data['fname']);
         self::assertSame($lastName, $data['lname']);
+    }
+
+    /**
+     * Specter should be able to select a random value from a list
+     *
+     * @test
+     * @return void
+     */
+    public function specterCanSelectRandomValues()
+    {
+        $specter = new Specter();
+        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/random-selection.json');
+        $fixture = json_decode($json, true);
+        $data    = $specter->substituteMockData($fixture);
+
+        self::assertContains(
+            $data['type'],
+            ['customer', 'vendor', 'owner'],
+            'The random value was not in the expected set'
+        );
     }
 }
 

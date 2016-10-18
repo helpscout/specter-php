@@ -8,7 +8,6 @@
 namespace HelpScout\Specter;
 
 use Faker;
-use Coduo\PHPMatcher\Matcher;
 use InvalidArgumentException;
 
 /**
@@ -73,6 +72,14 @@ class Specter
                 continue;
             }
 
+            // Random values are a little special - they aren't handled by a
+            // Faker producer
+            $randomTrigger = $this->trigger.'random|';
+            if (strpos($jsonValue, $randomTrigger) === 0) {
+                $fixture[$jsonKey] = $this->selectRandomValue($jsonValue);
+                continue;
+            }
+
             // Use the Faker producer for this data type if available.
             $producer = trim($jsonValue, $this->trigger);
             try {
@@ -85,6 +92,28 @@ class Specter
         }
 
         return $fixture;
+    }
+
+    /**
+     * Select a random value from the specified list
+     *
+     * @param string $jsonValue Json value including the property options
+     *
+     * @return string Random option from the pipe delimited list
+     */
+    private function selectRandomValue($jsonValue)
+    {
+        $jsonValue = trim($jsonValue, $this->trigger);
+        $jsonValue = str_replace('random|', '', $jsonValue);
+        $options   = explode('|', $jsonValue);
+
+        if (!count($options)) {
+            return 'Incorrect random list. Please supply a pipe delimited list.';
+        }
+
+        shuffle($options);
+
+        return $options[0];
     }
 }
 
