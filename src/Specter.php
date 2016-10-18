@@ -72,20 +72,38 @@ class Specter
                 continue;
             }
 
-            // Random values are a little special - they aren't handled by a
-            // Faker producer
-            $randomTrigger = $this->trigger.'random|';
-            if (strpos($jsonValue, $randomTrigger) === 0) {
-                $fixture[$jsonKey] = $this->selectRandomValue($jsonValue);
-                continue;
+            // Use the Faker producer for this data type if available.
+            $jsonValue  = trim($jsonValue, $this->trigger);
+            $parameters = explode('|', $jsonValue);
+            $producer   = array_shift($parameters);
+
+            // Transform any array-like parameters into arrays.
+            foreach ($parameters as $index => $parameter) {
+                if (strpos($parameter, ',')) {
+                    $parameters[$index] = explode(',', $parameter);
+                }
             }
 
-            // Use the Faker producer for this data type if available.
-            $producer = trim($jsonValue, $this->trigger);
             try {
                 // Note that type conversion will take place here - a matcher
                 // of `"@randomDigitNotNull@"` will be turned into an `int`.
-                $fixture[$jsonKey] = $this->faker->$producer;
+                switch (count($parameters)) {
+                    case 0:
+                        $fixture[$jsonKey] = $this->faker->$producer;
+                        break;
+                    case 1:
+                        $fixture[$jsonKey] = $this->faker->$producer($parameters[0]);
+                        break;
+                    case 2:
+                        $fixture[$jsonKey] = $this->faker->$producer($parameters[0], $parameters[1]);
+                        break;
+                    case 3:
+                        $fixture[$jsonKey] = $this->faker->$producer($parameters[0], $parameters[1], $parameters[2]);
+                        break;
+                    default:
+                        $fixture[$jsonKey] = call_user_func_array(array($this->faker, $producer), $parameters);
+                        break;
+                }
             } catch (InvalidArgumentException $e) {
                 $fixture[$jsonKey] = 'Unsupported formatter: @'.$producer.'@';
             }

@@ -13,5 +13,5 @@
     "zip": "@postcode@",
     "country": "@country@"
   },
-  "emails": ["@companyEmail@", "@freeEmail@", "@email@" ]
+  "emails": ["@companyEmail@", "@freeEmail@", "@email@"]
 }

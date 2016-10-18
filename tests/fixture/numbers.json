@@ -1,0 +1,6 @@
+{
+  "__specter": "Example of using Faker number producers",
+  "id": "@numberBetween|1000|9000@",
+  "quantity": "@randomNumber@",
+  "description": "@numerify|You've been a member for for ### days@"
+}

@@ -63,6 +63,43 @@ class SpecterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Specter can generate random numbers
+     *
+     * @test
+     * @return void
+     */
+    public function specterCanGenerateNumbers()
+    {
+        $specter = new Specter();
+        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/numbers.json');
+        $fixture = json_decode($json, true);
+        $data    = $specter->substituteMockData($fixture);
+
+        self::assertGreaterThanOrEqual(
+            1000,
+            $data['id'],
+            'The random id should have been between 1000 and 9000'
+        );
+        self::assertLessThanOrEqual(
+            9000,
+            $data['id'],
+            'The random id should have been between 1000 and 9000'
+        );
+
+        self::assertInternalType(
+            'integer',
+            $data['quantity'],
+            "The quantity should be an integer"
+        );
+
+        self::assertRegExp(
+            '~[0-9]~',
+            $data['description'],
+            "The description should have a number in it"
+        );
+    }
+
+    /**
      * Specter should be able to select a random value from a list
      *
      * @test
@@ -71,7 +108,7 @@ class SpecterTest extends PHPUnit_Framework_TestCase
     public function specterCanSelectRandomValues()
     {
         $specter = new Specter();
-        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/random-selection.json');
+        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/random-element.json');
         $fixture = json_decode($json, true);
         $data    = $specter->substituteMockData($fixture);
 
@@ -79,6 +116,12 @@ class SpecterTest extends PHPUnit_Framework_TestCase
             $data['type'],
             ['customer', 'vendor', 'owner'],
             'The random value was not in the expected set'
+        );
+
+        self::assertEquals(
+            2,
+            count($data['subscriptions']),
+            'The subscriptions subset was not the correct length'
         );
     }
 }
