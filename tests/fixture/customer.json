@@ -3,6 +3,7 @@
   "id": "@randomDigitNotNull@",
   "fname": "@firstName@",
   "lname": "@lastName@",
+  "avatar": "@randomGravatar|wavatar@",
   "company": "@company@",
   "jobTitle": "@jobTitle@",
   "background": "@catchPhrase@",

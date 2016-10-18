@@ -100,6 +100,14 @@ public function testCustomerRouteMeetsSpec()
 }
 ```
 
+## Custom Formatters
+
+In addition to the Faker library, Specter provides a few
+[other fomatters](https://github.com/helpscout/specter/tree/master/src/Provider)
+that offer some useful mocking.
+
+* `randomRobotAvatar`
+* `randomGravatar`
 
 [spec]: https://raw.githubusercontent.com/helpscout/specter/master/tests/fixture/customer.json
 [middleware]: https://github.com/helpscout/specter/blob/master/src/SpecterMiddleware.php

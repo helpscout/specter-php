@@ -8,6 +8,7 @@
 namespace HelpScout\Specter;
 
 use Faker;
+use HelpScout\Specter\Provider\Avatar;
 use InvalidArgumentException;
 
 /**
@@ -45,6 +46,7 @@ class Specter
     public function __construct($seed = 0)
     {
         $this->faker = Faker\Factory::create();
+        $this->faker->addProvider(new Avatar($this->faker));
         if ($seed) {
             $this->faker->seed($seed);
         }

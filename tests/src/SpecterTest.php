@@ -124,6 +124,26 @@ class SpecterTest extends PHPUnit_Framework_TestCase
             'The subscriptions subset was not the correct length'
         );
     }
+
+    /**
+     * Specter should be able to generate Avatar urls
+     *
+     * @test
+     * @return void
+     */
+    public function specterCanMakeAvatarUrls()
+    {
+        $specter = new Specter();
+        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/customer.json');
+        $fixture = json_decode($json, true);
+        $data    = $specter->substituteMockData($fixture);
+
+        self::assertContains(
+            'gravatar',
+            $data['avatar'],
+            'The avatar does not appear to be value'
+        );
+    }
 }
 
 /* End of file SpecterTest.php */
