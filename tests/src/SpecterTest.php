@@ -144,6 +144,61 @@ class SpecterTest extends PHPUnit_Framework_TestCase
             'The avatar does not appear to be value'
         );
     }
+
+
+    /**
+     * Specter should be able to select a related value from a list
+     *
+     * @test
+     * @return void
+     */
+    public function specterCanSelectRelatedValuesWithGeneratedValue()
+    {
+        $seed  = 1;
+        $faker = $this->fakerFactory($seed);
+        $faker->randomDigitNotNull; // Call to keep the random generator in sync
+        $faker->randomDigitNotNull;
+        $name    = $faker->name;
+        $specter = new Specter($seed);
+        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/related-element.json');
+        $fixture = json_decode($json, true);
+        $data    = $specter->substituteMockData($fixture);
+        self::assertEquals(
+            $data['type'],
+            'user',
+            'The seed should have made the type == customer'
+        );
+        self::assertEquals(
+            $data['name'],
+            $name,
+            'Incorrect related name generated'
+        );
+    }
+
+    /**
+     * Specter should be able to select a related value from a list
+     *
+     * @test
+     * @return void
+     */
+    public function specterCanSelectRelatedValuesWithStaticValue()
+    {
+        $seed    = 2;
+        $specter = new Specter($seed);
+        $json    = file_get_contents(TEST_FIXTURE_FOLDER.'/related-element.json');
+        $fixture = json_decode($json, true);
+        $data    = $specter->substituteMockData($fixture);
+        self::assertEquals(
+            $data['type'],
+            'guest',
+            'The seed should have made the type == guest'
+        );
+        self::assertEquals(
+            $data['name'],
+            'Guest User',
+            'A guest user should have been created'
+        );
+    }
 }
 
 /* End of file SpecterTest.php */

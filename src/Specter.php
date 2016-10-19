@@ -9,6 +9,7 @@ namespace HelpScout\Specter;
 
 use Faker;
 use HelpScout\Specter\Provider\Avatar;
+use HelpScout\Specter\Provider\RelatedElement;
 use InvalidArgumentException;
 
 /**
@@ -47,6 +48,7 @@ class Specter
     {
         $this->faker = Faker\Factory::create();
         $this->faker->addProvider(new Avatar($this->faker));
+        $this->faker->addProvider(new RelatedElement($this->faker, $this->trigger));
         if ($seed) {
             $this->faker->seed($seed);
         }
@@ -86,6 +88,20 @@ class Specter
                 }
             }
 
+            // Related to has some special requirements in that it needs access
+            // the the rest of the fixture data and the special related syntax.
+            $relatedTrigger = 'relatedElement:';
+            if (stripos($producer, $relatedTrigger) === 0) {
+                $relatedTo = str_replace($relatedTrigger, '', $producer);
+                $producer  = 'relatedElement';
+                $options   = [];
+                foreach ($parameters as $parameter) {
+                    list($key, $value) = explode(':', $parameter, 2);
+                    $options[$key]     = $value;
+                }
+                $parameters = [$relatedTo, $fixture, $options];
+            }
+
             try {
                 // Note that type conversion will take place here - a matcher
                 // of `"@randomDigitNotNull@"` will be turned into an `int`.
@@ -112,28 +128,6 @@ class Specter
         }
 
         return $fixture;
-    }
-
-    /**
-     * Select a random value from the specified list
-     *
-     * @param string $jsonValue Json value including the property options
-     *
-     * @return string Random option from the pipe delimited list
-     */
-    private function selectRandomValue($jsonValue)
-    {
-        $jsonValue = trim($jsonValue, $this->trigger);
-        $jsonValue = str_replace('random|', '', $jsonValue);
-        $options   = explode('|', $jsonValue);
-
-        if (!count($options)) {
-            return 'Incorrect random list. Please supply a pipe delimited list.';
-        }
-
-        shuffle($options);
-
-        return $options[0];
     }
 }
 

@@ -108,6 +108,7 @@ that offer some useful mocking.
 
 * `randomRobotAvatar`
 * `randomGravatar`
+* `relatedElement`
 
 [spec]: https://raw.githubusercontent.com/helpscout/specter/master/tests/fixture/customer.json
 [middleware]: https://github.com/helpscout/specter/blob/master/src/SpecterMiddleware.php

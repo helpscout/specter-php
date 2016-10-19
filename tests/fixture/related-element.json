@@ -1,0 +1,6 @@
+{
+  "__specter": "Example of using a related selection from a list",
+  "id": "@randomDigitNotNull@",
+  "type": "@randomElement|user,guest@",
+  "name": "@relatedElement:type|user:@name@|guest:Guest User@"
+}
