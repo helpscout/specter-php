@@ -6,10 +6,10 @@ use HelpScout\Specter\Tests\Helpers\FakerFactory;
 use HelpScout\Specter\Tests\Helpers\IlluminateHttpFactory;
 use InvalidArgumentException;
 use LogicException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-class IlluminateMiddlewareTest extends PHPUnit_Framework_TestCase implements SpecterMiddlewareTestInterface
+class IlluminateMiddlewareTest extends TestCase implements SpecterMiddlewareTestInterface
 {
     use FakerFactory;
     use IlluminateHttpFactory;

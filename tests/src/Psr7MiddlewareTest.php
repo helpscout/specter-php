@@ -13,10 +13,10 @@ namespace HelpScout\Specter\Tests;
 use HelpScout\Specter\Middleware\SpecterPsr7;
 use InvalidArgumentException;
 use LogicException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-class Psr7MiddlewareTest extends PHPUnit_Framework_TestCase implements SpecterMiddlewareTestInterface
+class Psr7MiddlewareTest extends TestCase implements SpecterMiddlewareTestInterface
 {
     use Helpers\PSR7HttpFactory, Helpers\FakerFactory;
 

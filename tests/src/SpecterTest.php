@@ -8,14 +8,14 @@
 namespace HelpScout\Specter\Tests;
 
 use HelpScout\Specter\Specter;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SpecterTest
  *
  * @package HelpScout\Specter\Tests
  */
-class SpecterTest extends PHPUnit_Framework_TestCase
+class SpecterTest extends TestCase
 {
     use Helpers\FakerFactory;
 

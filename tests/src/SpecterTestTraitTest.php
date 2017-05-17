@@ -12,15 +12,15 @@ namespace HelpScout\Specter\Tests;
 use Exception;
 use HelpScout\Specter\Testing\SpecterTestTrait;
 use InvalidArgumentException;
-use PHPUnit_Framework_ExpectationFailedException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SpecterTestTraitTest
  *
  * @package HelpScout\Specter\Tests
  */
-class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
+class SpecterTestTraitTest extends TestCase
 {
     use Helpers\PSR7HttpFactory, Helpers\FakerFactory, SpecterTestTrait;
 
@@ -41,7 +41,7 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
      * Assert that we fail if the response code is incorrect
      *
      * @return            void
-     * @expectedException PHPUnit_Framework_ExpectationFailedException
+     * @expectedException \PHPUnit\Framework\ExpectationFailedException
      * @throws            InvalidArgumentException
      */
     public function testTraitFailsIncorrectResponseCode()
@@ -73,7 +73,7 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
             );
         } catch (Exception $e) {
             self::assertInstanceOf(
-                'PHPUnit_Framework_AssertionFailedError',
+                AssertionFailedError::class,
                 $e,
                 'SpecterTestTrait should have failed with a missing property.'
             );
@@ -104,7 +104,7 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
             );
         } catch (Exception $e) {
             self::assertInstanceOf(
-                'PHPUnit_Framework_AssertionFailedError',
+                AssertionFailedError::class,
                 $e,
                 'SpecterTestTrait should have failed with a missing property.'
             );
@@ -137,7 +137,7 @@ class SpecterTestTraitTest extends PHPUnit_Framework_TestCase
             );
         } catch (Exception $e) {
             self::assertInstanceOf(
-                'PHPUnit_Framework_AssertionFailedError',
+                AssertionFailedError::class,
                 $e,
                 'SpecterTestTrait should have failed with a missing property.'
             );

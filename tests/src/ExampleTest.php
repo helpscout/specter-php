@@ -10,14 +10,14 @@
 namespace HelpScout\Specter\Tests;
 
 use HelpScout\Specter\SpecterTestTrait;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ExampleTest
  *
  * @package HelpScout\Specter\Tests
  */
-class ExampleTest extends PHPUnit_Framework_TestCase
+class ExampleTest extends TestCase
 {
     use SpecterTestTrait;
 
