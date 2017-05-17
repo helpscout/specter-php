@@ -50,7 +50,10 @@ trait SpecterTestTrait
     static private $fakerMatchers = [
         'freeEmail'    => '@string@.isEmail()',
         'email'        => '@string@.isEmail()',
-        'companyEmail' => '@string@.isEmail()'
+        'companyEmail' => '@string@.isEmail()',
+        'url'          => '@string@.isUrl()',
+        // inArray($value)
+        // oneOf(...$expanders) - example usage "@string@.oneOf(contains('foo'), contains('bar'), contains('baz'))"
     ];
 
     /**
