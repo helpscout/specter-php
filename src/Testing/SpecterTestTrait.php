@@ -11,7 +11,6 @@
 namespace HelpScout\Specter\Testing;
 
 use Coduo\PHPMatcher\Factory\SimpleFactory;
-use Coduo\PHPMatcher\Matcher;
 use Diff;
 use Diff_Renderer_Text_Unified;
 use Faker;
@@ -277,6 +276,8 @@ trait SpecterTestTrait
      * Get the API fixture data path
      *
      * @return string path to api fixture data where json
+     *
+     * @codeCoverageIgnore
      */
     static public function getFixtureFolder()
     {
@@ -289,6 +290,8 @@ trait SpecterTestTrait
      * @param string $path to api fixture data where json
      *
      * @return void
+     *
+     * @codeCoverageIgnore
      */
     static public function setFixtureFolder($path)
     {

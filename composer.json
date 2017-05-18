@@ -50,6 +50,9 @@
         "phpunit/phpunit": "^6.1",
         "squizlabs/php_codesniffer": "^3.0"
     },
+    "bin": [
+        "bin/specter"
+    ],
     "scripts": {
         "test": [
             "@lint",
