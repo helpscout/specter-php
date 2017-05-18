@@ -25,6 +25,10 @@ PrePush:
     enabled: true
     branches: ['master']
 
+  CustomScript:
+    enabled: true
+    required_executable: './vendor/bin/phpunit'
+
 PreCommit:
   ALL:
     problem_on_unmodified_line: ignore
