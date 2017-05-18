@@ -34,6 +34,7 @@
  * @copyright 2016 Help Scout
  */
 
+use HelpScout\Specter\Specter;
 
 if (version_compare('7.0.0', PHP_VERSION, '>')) {
     fwrite(
@@ -54,8 +55,8 @@ if (!ini_get('date.timezone')) {
 
 require __DIR__.'/../vendor/autoload.php';
 
-
-$configDir  = realpath(__DIR__ . '/../test/config');
+$options   = getopt('', ["config::"]);
+$configDir = $options['config'] ?? realpath(__DIR__ . '/../tests/generators');
 
 foreach (glob($configDir.'/*.php') as $filename) {
     echo 'Processing ',basename($filename),"\n";
@@ -104,17 +105,16 @@ class FixtureGenerator
     {
         if (isset($fixture['process'])) {
             $processFunc = $fixture['process'];
-            $vars = isset($fixture['vars']) ? $fixture['vars'] : [];
+            $vars        = isset($fixture['vars']) ? $fixture['vars'] : [];
             return call_user_func_array($processFunc, [$this, $vars]);
         }
 
-        $seed      = array_get($fixture, 'seed', null);
-        $callback  = array_get($fixture, 'postProcess', function (&$fixture) {
-            $fixture['id'] = 'default';
-        });
+        // TODO: Perhaps this should be a default process method
+        $seed        = array_get($fixture, 'seed', null);
+        $callback    = array_get($fixture, 'postProcess');
         $description = array_get($fixture, 'description');
-        $processor = new MockDataProcessor($seed);
-        $specFile  = sprintf(
+        $processor   = new Specter($seed);
+        $specFile    = sprintf(
             '%s/%s',
             $this->specterDirectory,
             $fixture['specterFile']
@@ -131,7 +131,9 @@ class FixtureGenerator
         // cast to object
         $spec = json_decode(json_encode($spec), false);
 
-        call_user_func($callback, $spec);
+        if (is_callable($callback)) {
+            call_user_func($callback, $spec);
+        }
 
         $spec->__specter = $description;
 
@@ -175,7 +177,7 @@ class FixtureGenerator
             json_encode($json, JSON_PRETTY_PRINT)
         );
 
-        echo $outputPath, "\n";
+        echo '  ',$outputPath, "\n";
     }
 }
 

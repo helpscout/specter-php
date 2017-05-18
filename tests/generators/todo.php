@@ -4,7 +4,7 @@
  */
 return [
     'outputDirectory' => './examples/fixtures',
-    'specterDirectory' => './test/fixture/todo',
+    'specterDirectory' => './tests/fixture',
     'specs' => [
         [
             'specterFile' => 'todo.json',

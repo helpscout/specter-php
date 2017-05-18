@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/composer,phpstorm,osx
 
+### Specter testing files ###
+examples/fixtures
+
 ### PHPUnit ###
 build/logs
 build/coverage
