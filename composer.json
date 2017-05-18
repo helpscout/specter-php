@@ -22,6 +22,9 @@
       "issues": "https://github.com/helpscout/php-standards/issues"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/helpers.php"
+        ],
         "psr-4": {
             "HelpScout\\Specter\\": "src/"
         }
@@ -38,8 +41,7 @@
         "fzaninotto/faker": "^1.6",
         "guzzlehttp/psr7": "^1.3",
         "phpspec/php-diff": "^1.1",
-        "psr/http-message": "^1.0",
-        "illuminate/support": "^5.4"
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",

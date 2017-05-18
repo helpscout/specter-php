@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c9490d13c7dd592360f1a648da6588b",
+    "content-hash": "c4c56f4b0478e682a82aa88f6aaf5c94",
     "packages": [
         {
             "name": "coduo/php-matcher",
@@ -119,73 +119,6 @@
                 "to string"
             ],
             "time": "2016-01-20 18:29:02"
-        },
-        {
-            "name": "doctrine/inflector",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "803a2ed9fea02f9ca47cd45395089fe78769a392"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/803a2ed9fea02f9ca47cd45395089fe78769a392",
-                "reference": "803a2ed9fea02f9ca47cd45395089fe78769a392",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Inflector\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "inflection",
-                "pluralize",
-                "singularize",
-                "string"
-            ],
-            "time": "2016-05-12 17:23:41"
         },
         {
             "name": "doctrine/lexer",
@@ -355,104 +288,6 @@
                 "url"
             ],
             "time": "2017-05-09 09:16:44"
-        },
-        {
-            "name": "illuminate/contracts",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "336bdcdfaa6b109af376d736bc4557d9af11e7c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/336bdcdfaa6b109af376d736bc4557d9af11e7c2",
-                "reference": "336bdcdfaa6b109af376d736bc4557d9af11e7c2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "The Illuminate Contracts package.",
-            "homepage": "https://laravel.com",
-            "time": "2017-05-14 21:28:09"
-        },
-        {
-            "name": "illuminate/support",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/support.git",
-                "reference": "2a5c9c2b6da3691ccd878c6c16710b1f4f1bf174"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/2a5c9c2b6da3691ccd878c6c16710b1f4f1bf174",
-                "reference": "2a5c9c2b6da3691ccd878c6c16710b1f4f1bf174",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "~1.0",
-                "ext-mbstring": "*",
-                "illuminate/contracts": "5.5.*",
-                "php": ">=7.0"
-            },
-            "replace": {
-                "tightenco/collect": "self.version"
-            },
-            "suggest": {
-                "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-                "symfony/process": "Required to use the composer class (~3.2).",
-                "symfony/var-dumper": "Required to use the dd function (~3.2)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "The Illuminate Support package.",
-            "homepage": "https://laravel.com",
-            "time": "2017-05-18 17:02:28"
         },
         {
             "name": "openlss/lib-array2xml",
@@ -1145,7 +980,74 @@
                 "codeclimate",
                 "coverage"
             ],
-            "time": "2017-04-24T15:47:41+00:00"
+            "time": "2017-04-24 15:47:41"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "803a2ed9fea02f9ca47cd45395089fe78769a392"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/803a2ed9fea02f9ca47cd45395089fe78769a392",
+                "reference": "803a2ed9fea02f9ca47cd45395089fe78769a392",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Inflector\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "inflection",
+                "pluralize",
+                "singularize",
+                "string"
+            ],
+            "time": "2016-05-12 17:23:41"
         },
         {
             "name": "doctrine/instantiator",
@@ -1199,7 +1101,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-02-16T16:15:51+00:00"
+            "time": "2017-02-16 16:15:51"
         },
         {
             "name": "guzzle/guzzle",
@@ -1295,7 +1197,7 @@
                 "web service"
             ],
             "abandoned": "guzzlehttp/guzzle",
-            "time": "2016-10-26T18:22:07+00:00"
+            "time": "2016-10-26 18:22:07"
         },
         {
             "name": "helpscout/php-standards",
@@ -1329,7 +1231,49 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-06-17T13:37:47+00:00"
+            "time": "2016-06-17 13:37:47"
+        },
+        {
+            "name": "illuminate/contracts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/contracts.git",
+                "reference": "336bdcdfaa6b109af376d736bc4557d9af11e7c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/336bdcdfaa6b109af376d736bc4557d9af11e7c2",
+                "reference": "336bdcdfaa6b109af376d736bc4557d9af11e7c2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Contracts\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Contracts package.",
+            "homepage": "https://laravel.com",
+            "time": "2017-05-14 21:28:09"
         },
         {
             "name": "illuminate/filesystem",
@@ -1379,7 +1323,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-18T17:02:28+00:00"
+            "time": "2017-05-18 17:02:28"
         },
         {
             "name": "illuminate/http",
@@ -1425,7 +1369,7 @@
             ],
             "description": "The Illuminate Http package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-18T17:02:28+00:00"
+            "time": "2017-05-18 17:02:28"
         },
         {
             "name": "illuminate/session",
@@ -1476,7 +1420,63 @@
             ],
             "description": "The Illuminate Session package.",
             "homepage": "https://laravel.com",
-            "time": "2017-04-03T13:30:38+00:00"
+            "time": "2017-04-03 13:30:38"
+        },
+        {
+            "name": "illuminate/support",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "2a5c9c2b6da3691ccd878c6c16710b1f4f1bf174"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/2a5c9c2b6da3691ccd878c6c16710b1f4f1bf174",
+                "reference": "2a5c9c2b6da3691ccd878c6c16710b1f4f1bf174",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/inflector": "~1.0",
+                "ext-mbstring": "*",
+                "illuminate/contracts": "5.5.*",
+                "php": ">=7.0"
+            },
+            "replace": {
+                "tightenco/collect": "self.version"
+            },
+            "suggest": {
+                "illuminate/filesystem": "Required to use the composer class (5.2.*).",
+                "symfony/process": "Required to use the composer class (~3.2).",
+                "symfony/var-dumper": "Required to use the dd function (~3.2)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Support\\": ""
+                },
+                "files": [
+                    "helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Support package.",
+            "homepage": "https://laravel.com",
+            "time": "2017-05-18 17:02:28"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1705,7 +1705,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-02-06T22:02:47+00:00"
+            "time": "2017-02-06 22:02:47"
         },
         {
             "name": "padraic/humbug_get_contents",
@@ -1762,7 +1762,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2017-04-14T20:44:01+00:00"
+            "time": "2017-04-14 20:44:01"
         },
         {
             "name": "padraic/phar-updater",
@@ -1814,7 +1814,7 @@
                 "self-update",
                 "update"
             ],
-            "time": "2017-05-08T23:38:00+00:00"
+            "time": "2017-05-08 23:38:00"
         },
         {
             "name": "phar-io/manifest",
@@ -1869,7 +1869,7 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
-            "time": "2017-04-07T07:07:10+00:00"
+            "time": "2017-04-07 07:07:10"
         },
         {
             "name": "phar-io/version",
@@ -1970,7 +1970,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2017-04-30T11:58:12+00:00"
+            "time": "2017-04-30 11:58:12"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2125,7 +2125,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2017-05-17T11:25:27+00:00"
+            "time": "2017-05-17 11:25:27"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2189,7 +2189,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-04-21T08:03:57+00:00"
+            "time": "2017-04-21 08:03:57"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2236,7 +2236,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2016-10-03T07:40:28+00:00"
+            "time": "2016-10-03 07:40:28"
         },
         {
             "name": "phpunit/php-text-template",
@@ -2326,7 +2326,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2017-03-07T15:42:04+00:00"
+            "time": "2017-03-07 15:42:04"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -2375,7 +2375,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-03-07T07:36:57+00:00"
+            "time": "2017-03-07 07:36:57"
         },
         {
             "name": "phpunit/phpunit",
@@ -2459,7 +2459,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-05-17T19:55:08+00:00"
+            "time": "2017-05-17 19:55:08"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2518,7 +2518,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-04-01T10:07:28+00:00"
+            "time": "2017-04-01 10:07:28"
         },
         {
             "name": "satooshi/php-coveralls",
@@ -2576,7 +2576,7 @@
                 "github",
                 "test"
             ],
-            "time": "2017-02-25T12:10:28+00:00"
+            "time": "2017-02-25 12:10:28"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2621,7 +2621,7 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2017-03-04T10:23:55+00:00"
+            "time": "2017-03-04 10:23:55"
         },
         {
             "name": "sebastian/comparator",
@@ -2685,7 +2685,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-03-07T07:07:51+00:00"
+            "time": "2017-03-07 07:07:51"
         },
         {
             "name": "sebastian/diff",
@@ -2737,7 +2737,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-05-18T13:44:30+00:00"
+            "time": "2017-05-18 13:44:30"
         },
         {
             "name": "sebastian/environment",
@@ -2787,7 +2787,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-05-18T10:10:00+00:00"
+            "time": "2017-05-18 10:10:00"
         },
         {
             "name": "sebastian/exporter",
@@ -2854,7 +2854,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-04-03T13:19:02+00:00"
+            "time": "2017-04-03 13:19:02"
         },
         {
             "name": "sebastian/global-state",
@@ -2905,7 +2905,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2017-04-27T15:39:26+00:00"
+            "time": "2017-04-27 15:39:26"
         },
         {
             "name": "sebastian/object-enumerator",
@@ -2952,7 +2952,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2017-03-12T15:17:29+00:00"
+            "time": "2017-03-12 15:17:29"
         },
         {
             "name": "sebastian/object-reflector",
@@ -2997,7 +2997,7 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2017-03-29T09:07:27+00:00"
+            "time": "2017-03-29 09:07:27"
         },
         {
             "name": "sebastian/recursion-context",
@@ -3050,7 +3050,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2017-03-07T15:09:59+00:00"
+            "time": "2017-03-07 15:09:59"
         },
         {
             "name": "sebastian/resource-operations",
@@ -3092,7 +3092,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2016-10-03T07:43:09+00:00"
+            "time": "2016-10-03 07:43:09"
         },
         {
             "name": "sebastian/version",
@@ -3135,7 +3135,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2016-10-03T07:35:21+00:00"
+            "time": "2016-10-03 07:35:21"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -3213,7 +3213,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2017-05-09T00:20:33+00:00"
+            "time": "2017-05-09 00:20:33"
         },
         {
             "name": "symfony/config",
@@ -3273,7 +3273,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "symfony/console",
@@ -3341,7 +3341,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "symfony/debug",
@@ -3397,7 +3397,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -3457,7 +3457,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-26T16:56:54+00:00"
+            "time": "2017-04-26 16:56:54"
         },
         {
             "name": "symfony/filesystem",
@@ -3506,7 +3506,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-17T16:21:40+00:00"
+            "time": "2017-05-17 16:21:40"
         },
         {
             "name": "symfony/finder",
@@ -3555,7 +3555,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-17T16:21:40+00:00"
+            "time": "2017-05-17 16:21:40"
         },
         {
             "name": "symfony/http-foundation",
@@ -3608,7 +3608,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "symfony/http-kernel",
@@ -3692,7 +3692,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3751,7 +3751,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/stopwatch",
@@ -3800,7 +3800,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-17T16:21:40+00:00"
+            "time": "2017-05-17 16:21:40"
         },
         {
             "name": "symfony/translation",
@@ -3865,7 +3865,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "symfony/yaml",
@@ -3920,7 +3920,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-18T12:56:12+00:00"
+            "time": "2017-05-18 12:56:12"
         },
         {
             "name": "theseer/tokenizer",
@@ -4010,7 +4010,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-11-23T20:04:41+00:00"
+            "time": "2016-11-23 20:04:41"
         }
     ],
     "aliases": [],
