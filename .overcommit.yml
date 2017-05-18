@@ -27,7 +27,7 @@ PrePush:
 
   CustomScript:
     enabled: true
-    required_executable: './vendor/bin/phpunit'
+    required_executable: 'vendor/bin/phpunit'
 
 PreCommit:
   ALL:
@@ -37,9 +37,7 @@ PreCommit:
     quiet: false
     exclude: &default_excludes
       - 'build/**/*'
-      - 'log/**/*'
-      - 'site/vendors/**/*'
-      - 'vendor-reference/**/*'
+      - 'vendor/**/*'
 
   AuthorEmail:
     enabled: true
