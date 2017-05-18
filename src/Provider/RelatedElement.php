@@ -44,7 +44,7 @@ class RelatedElement extends Base
      * @param Generator $generator
      * @param string    $trigger
      */
-    public function __construct(Generator $generator, $trigger)
+    public function __construct(Generator $generator, $trigger = '@')
     {
         parent::__construct($generator);
         $this->trigger = $trigger;

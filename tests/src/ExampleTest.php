@@ -9,7 +9,7 @@
  */
 namespace HelpScout\Specter\Tests;
 
-use HelpScout\Specter\SpecterTestTrait;
+use HelpScout\Specter\Testing\SpecterTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

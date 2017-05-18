@@ -68,8 +68,8 @@ PreCommit:
 
   PhpCs:
     enabled: true
-    command: 'site/vendors/bin/phpcs'
-    flags: ['--standard=site/vendors/helpscout/php-standards/HelpScout', '--report=csv', '--warning-severity=0']
+    command: 'vendor/bin/phpcs'
+    flags: ['--standard=vendor/helpscout/php-standards/HelpScout', '--report=csv', '--warning-severity=0']
     include: '**/*.php'
     problem_on_unmodified_line: ignore
     description: 'Checking style violations [PHP]'

@@ -8,6 +8,8 @@
 namespace HelpScout\Specter\Tests\Helpers;
 
 use Faker;
+use HelpScout\Specter\Provider\Avatar;
+use HelpScout\Specter\Provider\RelatedElement;
 
 /**
  * Trait FakerFactory
@@ -26,9 +28,13 @@ trait FakerFactory
     public function fakerFactory($seed = 0)
     {
         $faker = Faker\Factory::create();
+        $faker->addProvider(new Avatar($faker));
+        $faker->addProvider(new RelatedElement($faker, '@'));
+
         if ($seed) {
             $faker->seed($seed);
         }
+
         return $faker;
     }
 }
