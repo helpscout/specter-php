@@ -26,8 +26,8 @@ PrePush:
     branches: ['master']
 
   PHPUnit:
-    enabled: true
-    command: 'vendor/bin/phpunit'
+    enabled: false
+    command: './vendor/bin/phpunit'
     include: '**/*.php'
     description: 'Running tests [PHP]'
 
