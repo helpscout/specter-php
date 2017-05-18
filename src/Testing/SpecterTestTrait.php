@@ -243,14 +243,17 @@ trait SpecterTestTrait
             $arguments
         );
 
-        // These are explicitly set by configuration
+        // These are explicitly set by configuration to match a php-matcher to
+        // the output of a particular Faker provider
         if (array_key_exists($producer, self::$fakerMatchers)) {
-            return call_user_func_array(array(self::$fakerMatchers, $producerName), $arguments);
+            return self::$fakerMatchers[$producer];
         }
-        // These are type inferred
+
+        // These are type checked by getting the type from Faker output
         try {
-            $result = call_user_func_array(array(self::$faker, $producerName), $arguments);
-            return '@'.gettype($result).'@';
+            $result = call_user_func_array([self::$faker, $producerName], $arguments);
+            $type   = gettype($result);
+            return '@'.$type.'@';
         } catch (InvalidArgumentException $e) {
             throw new LogicException('Unsupported formatter: @'.$producer.'@');
         }

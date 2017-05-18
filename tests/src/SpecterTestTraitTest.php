@@ -22,7 +22,9 @@ use PHPUnit\Framework\TestCase;
  */
 class SpecterTestTraitTest extends TestCase
 {
-    use Helpers\PSR7HttpFactory, Helpers\FakerFactory, SpecterTestTrait;
+    use Helpers\PSR7HttpFactory;
+    use Helpers\FakerFactory;
+    use SpecterTestTrait;
 
     /**
      * Assert that we pass if the response code is incorrect
