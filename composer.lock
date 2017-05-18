@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab26602a194c0bcc60ff0905049d4b62",
+    "content-hash": "9c9490d13c7dd592360f1a648da6588b",
     "packages": [
         {
             "name": "coduo/php-matcher",
@@ -1145,7 +1145,7 @@
                 "codeclimate",
                 "coverage"
             ],
-            "time": "2017-04-24 15:47:41"
+            "time": "2017-04-24T15:47:41+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -1199,7 +1199,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-02-16 16:15:51"
+            "time": "2017-02-16T16:15:51+00:00"
         },
         {
             "name": "guzzle/guzzle",
@@ -1329,7 +1329,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-06-17 13:37:47"
+            "time": "2016-06-17T13:37:47+00:00"
         },
         {
             "name": "illuminate/filesystem",
@@ -1337,12 +1337,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "4bd5ed341f014fb2f12319dadad7a16b440126f3"
+                "reference": "e04df827c0d39eadde8f6d0650a02f6715ba3fc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/4bd5ed341f014fb2f12319dadad7a16b440126f3",
-                "reference": "4bd5ed341f014fb2f12319dadad7a16b440126f3",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/e04df827c0d39eadde8f6d0650a02f6715ba3fc7",
+                "reference": "e04df827c0d39eadde8f6d0650a02f6715ba3fc7",
                 "shasum": ""
             },
             "require": {
@@ -1379,7 +1379,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-11 20:10:14"
+            "time": "2017-05-18T17:02:28+00:00"
         },
         {
             "name": "illuminate/http",
@@ -1387,12 +1387,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "5104a78512d1ebf7251037ae2839948f188be67a"
+                "reference": "128a9eb60b7085783b12f6f102b2ef4ec715947c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/5104a78512d1ebf7251037ae2839948f188be67a",
-                "reference": "5104a78512d1ebf7251037ae2839948f188be67a",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/128a9eb60b7085783b12f6f102b2ef4ec715947c",
+                "reference": "128a9eb60b7085783b12f6f102b2ef4ec715947c",
                 "shasum": ""
             },
             "require": {
@@ -1425,7 +1425,7 @@
             ],
             "description": "The Illuminate Http package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-15 17:29:59"
+            "time": "2017-05-18T17:02:28+00:00"
         },
         {
             "name": "illuminate/session",
@@ -1476,7 +1476,7 @@
             ],
             "description": "The Illuminate Session package.",
             "homepage": "https://laravel.com",
-            "time": "2017-04-03 13:30:38"
+            "time": "2017-04-03T13:30:38+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1705,7 +1705,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-02-06 22:02:47"
+            "time": "2017-02-06T22:02:47+00:00"
         },
         {
             "name": "padraic/humbug_get_contents",
@@ -1762,7 +1762,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2017-04-14 20:44:01"
+            "time": "2017-04-14T20:44:01+00:00"
         },
         {
             "name": "padraic/phar-updater",
@@ -1814,7 +1814,7 @@
                 "self-update",
                 "update"
             ],
-            "time": "2017-05-08 23:38:00"
+            "time": "2017-05-08T23:38:00+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -1869,7 +1869,7 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
-            "time": "2017-04-07 07:07:10"
+            "time": "2017-04-07T07:07:10+00:00"
         },
         {
             "name": "phar-io/version",
@@ -1970,7 +1970,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2017-04-30 11:58:12"
+            "time": "2017-04-30T11:58:12+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2189,7 +2189,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-04-21 08:03:57"
+            "time": "2017-04-21T08:03:57+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2236,7 +2236,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2016-10-03 07:40:28"
+            "time": "2016-10-03T07:40:28+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -2326,7 +2326,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2017-03-07 15:42:04"
+            "time": "2017-03-07T15:42:04+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -2375,7 +2375,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-03-07 07:36:57"
+            "time": "2017-03-07T07:36:57+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -2518,7 +2518,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-04-01 10:07:28"
+            "time": "2017-04-01T10:07:28+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
@@ -2576,7 +2576,7 @@
                 "github",
                 "test"
             ],
-            "time": "2017-02-25 12:10:28"
+            "time": "2017-02-25T12:10:28+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2621,7 +2621,7 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2017-03-04 10:23:55"
+            "time": "2017-03-04T10:23:55+00:00"
         },
         {
             "name": "sebastian/comparator",
@@ -2685,7 +2685,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-03-07 07:07:51"
+            "time": "2017-03-07T07:07:51+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -2693,12 +2693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "86ba64b90d6da250a75a734bf22db25232b7304c"
+                "reference": "3c7d21999e815cdfac70c6c7d79d3a9cb1bc7bc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/86ba64b90d6da250a75a734bf22db25232b7304c",
-                "reference": "86ba64b90d6da250a75a734bf22db25232b7304c",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/3c7d21999e815cdfac70c6c7d79d3a9cb1bc7bc2",
+                "reference": "3c7d21999e815cdfac70c6c7d79d3a9cb1bc7bc2",
                 "shasum": ""
             },
             "require": {
@@ -2737,7 +2737,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-05-16 12:08:37"
+            "time": "2017-05-18T13:44:30+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -2745,12 +2745,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "11e7710b7724d42c62249b0e9d3030240398949d"
+                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/11e7710b7724d42c62249b0e9d3030240398949d",
-                "reference": "11e7710b7724d42c62249b0e9d3030240398949d",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
+                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
                 "shasum": ""
             },
             "require": {
@@ -2787,7 +2787,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-04-21 14:40:32"
+            "time": "2017-05-18T10:10:00+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -2854,7 +2854,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-04-03 13:19:02"
+            "time": "2017-04-03T13:19:02+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -2905,7 +2905,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2017-04-27 15:39:26"
+            "time": "2017-04-27T15:39:26+00:00"
         },
         {
             "name": "sebastian/object-enumerator",
@@ -2952,7 +2952,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2017-03-12 15:17:29"
+            "time": "2017-03-12T15:17:29+00:00"
         },
         {
             "name": "sebastian/object-reflector",
@@ -2997,7 +2997,7 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2017-03-29 09:07:27"
+            "time": "2017-03-29T09:07:27+00:00"
         },
         {
             "name": "sebastian/recursion-context",
@@ -3050,7 +3050,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2017-03-07 15:09:59"
+            "time": "2017-03-07T15:09:59+00:00"
         },
         {
             "name": "sebastian/resource-operations",
@@ -3092,7 +3092,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2016-10-03 07:43:09"
+            "time": "2016-10-03T07:43:09+00:00"
         },
         {
             "name": "sebastian/version",
@@ -3135,7 +3135,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2016-10-03 07:35:21"
+            "time": "2016-10-03T07:35:21+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -3751,7 +3751,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -4010,13 +4010,12 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-11-23 20:04:41"
+            "time": "2016-11-23T20:04:41+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "illuminate/support": 20,
         "codeclimate/php-test-reporter": 20,
         "helpscout/php-standards": 20
     },

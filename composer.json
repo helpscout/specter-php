@@ -39,7 +39,7 @@
         "guzzlehttp/psr7": "^1.3",
         "phpspec/php-diff": "^1.1",
         "psr/http-message": "^1.0",
-        "illuminate/support": "^5.5@dev"
+        "illuminate/support": "^5.4"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
