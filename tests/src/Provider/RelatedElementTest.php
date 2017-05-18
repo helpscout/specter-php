@@ -83,6 +83,75 @@ class RelatedElementTest extends TestCase
 
         $this->assertEquals($expected, $fixture['name']);
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function providerProvidesExplanationForInvalidRelatedToKey()
+    {
+        $seed    = 8;
+        $faker   = $this->fakerFactory($seed);
+        $fixture = [
+            'type' => 'user',
+        ];
+        $name    = $faker->relatedElement(
+            'somekeythatdoesnotexist',
+            $fixture,
+            [
+                'guest' => 'Guest Account',
+                'user'  => '@name@'
+            ]
+        );
+
+        $this->assertContains('Invalid related to key', $name);
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function providerProvidesExplanationForInvalidRelatedToOptions()
+    {
+        $seed    = 8;
+        $faker   = $this->fakerFactory($seed);
+        $fixture = [
+            'type' => 'thisdoesnotmatchanoption',
+        ];
+        $name    = $faker->relatedElement(
+            'type',
+            $fixture,
+            [
+                'guest' => 'Guest Account',
+                'user'  => '@name@'
+            ]
+        );
+
+        $this->assertContains('was not found in the options list', $name);
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function providerProvidesExplanationForInvalidProducer()
+    {
+        $seed    = 8;
+        $faker   = $this->fakerFactory($seed);
+        $fixture = [
+            'type' => 'user',
+        ];
+        $name    = $faker->relatedElement(
+            'type',
+            $fixture,
+            [
+                'guest' => 'Guest Account',
+                'user'  => '@thisdoesnotexist@'
+            ]
+        );
+
+        $this->assertContains('Unsupported formatter', $name);
+    }
 }
 
 /* End of file RelatedElementTest.php */
