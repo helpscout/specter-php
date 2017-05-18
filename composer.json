@@ -61,6 +61,10 @@
         "strict": "vendor/bin/phpcs --standard=vendor/helpscout/php-standards/HelpScout --extensions=php src tests",
         "format": "vendor/bin/phpcbf --standard=vendor/helpscout/php-standards/HelpScout --extensions=php src tests",
         "phpunit": "vendor/bin/phpunit --verbose",
-        "phpunit-example": "vendor/bin/phpunit --verbose tests/src/ExampleTest.php"
+        "phpunit-example": "vendor/bin/phpunit --verbose tests/src/ExampleTest.php",
+        "coverage": [
+            "vendor/bin/phpunit --coverage-html build/coverage",
+            "php -S localhost:8080 -t build/coverage"
+        ]
     }
 }

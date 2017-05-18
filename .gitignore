@@ -2,6 +2,7 @@
 
 ### PHPUnit ###
 build/logs
+build/coverage
 
 
 ### Composer ###
