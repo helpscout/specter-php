@@ -18,6 +18,7 @@ class RelatedElementTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function providerCanInstantiate()
     {
@@ -31,6 +32,7 @@ class RelatedElementTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function providerCanSelectRelatedWithStaticValue()
     {
@@ -55,6 +57,7 @@ class RelatedElementTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function providerCanSelectRelatedWithFakerValue()
     {

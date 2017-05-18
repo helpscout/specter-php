@@ -18,6 +18,7 @@ class AvatarTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function providerCanInstantiate()
     {
@@ -31,6 +32,7 @@ class AvatarTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function providerCanProviderRobotAvatar()
     {
@@ -43,6 +45,7 @@ class AvatarTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function providerCanProviderRandomGravatar()
     {

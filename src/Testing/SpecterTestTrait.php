@@ -227,12 +227,29 @@ trait SpecterTestTrait
      */
     static private function getMatcherType($producer)
     {
-        if (array_key_exists($producer, self::$fakerMatchers)) {
-            return self::$fakerMatchers[$producer];
-        }
+        // Explode a `randomElements|args1|arg2|arg3` into its constituent pieces
+        $pieces       = explode('|', $producer);
+        $producerName = $pieces[0];
+        $arguments    = array_splice($pieces, 1);
 
+        // The arguments might be a csv list for an array
+        $arguments = array_map(
+            function ($argument) {
+                if (str_contains($argument, ',')) {
+                    return explode(',', $argument);
+                }
+                return $argument;
+            },
+            $arguments
+        );
+
+        // These are explicitly set by configuration
+        if (array_key_exists($producer, self::$fakerMatchers)) {
+            return call_user_func_array(array(self::$fakerMatchers, $producerName), $arguments);
+        }
+        // These are type inferred
         try {
-            $result = self::$faker->$producer();
+            $result = call_user_func_array(array(self::$faker, $producerName), $arguments);
             return '@'.gettype($result).'@';
         } catch (InvalidArgumentException $e) {
             throw new LogicException('Unsupported formatter: @'.$producer.'@');

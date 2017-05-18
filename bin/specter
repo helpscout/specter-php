@@ -26,7 +26,6 @@ if (!ini_get('date.timezone')) {
 
 require __DIR__.'/../vendor/autoload.php';
 
-
 echo 'Placeholder for a fixture generation system';
 
 /* End of file specter */
