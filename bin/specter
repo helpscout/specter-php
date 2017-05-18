@@ -1,11 +1,39 @@
 #!/usr/bin/env php
 <?php
 /**
- * Specter command line tool
+ * Generate JSON Fixture files from Specter Spec files
+ *
+ * This will create a set of static JSON files that can be used in Nightwatch
+ * and JSUnit/Jasmine testing. These file should /not/ be edited by hand after
+ * they've been generated.
+ *
+ * If you want to edit the output, use the callback function to change the
+ * fixture before they are persisted to disk. This means that we'll always be
+ * able to regenerate all of the files anytime that we'd like.
+ *
+ * Technically, it means we don't even have to check them in, and could generate
+ * them post-clone or post-pull.
+ *
+ * Directions:
+ *   - Place a new config file in the $configDir
+ *   - Run this script
+ *
+ * Config File:
+ *   The config file specifies how the fixture should be generated.
+ *
+ *   - specterFile => Path to the Specter JSON specification file
+ *   - outputFile  => Path where the generated fixture file will be saved
+ *   - seed        => (nullable) A seed to allow the fixture data to persist
+ *                    across regeneration
+ *   - postProcess => (nullable) A callback that can be used to transform the
+ *                    output of the fixture before being saved. Note that the
+ *                    fixture has been cast to an object, and so it's passed by
+ *                    reference.
  *
  * @author    Platform Team <developer@helpscout.net>
  * @copyright 2016 Help Scout
  */
+
 
 if (version_compare('7.0.0', PHP_VERSION, '>')) {
     fwrite(
@@ -26,6 +54,129 @@ if (!ini_get('date.timezone')) {
 
 require __DIR__.'/../vendor/autoload.php';
 
-echo 'Placeholder for a fixture generation system';
+
+$configDir  = realpath(__DIR__ . '/../test/config');
+
+foreach (glob($configDir.'/*.php') as $filename) {
+    echo 'Processing ',basename($filename),"\n";
+    $config = include $filename;
+    $generator = new FixtureGenerator($config);
+    $generator($config);
+}
+
+class FixtureGenerator
+{
+    private $outputDirectory;
+    private $specterDirectory;
+
+    public function __construct($config) {
+        $this->outputDirectory  = $config['outputDirectory'];
+        $this->specterDirectory  = $config['specterDirectory'];
+    }
+
+    public function __invoke($config)
+    {
+        $this->processFixtureConfig($config['specs']);
+    }
+
+    /**
+     * Create a fixture file for each record in a config array
+     *
+     * @param array $specs
+     */
+    private function processFixtureConfig($specs)
+    {
+        foreach ($specs as $fixture) {
+            $this->checkRequiredSettings($fixture);
+            $json = $this->generateFixture($fixture);
+            $this->outputSpecFile($fixture['outputFile'], $json);
+        }
+    }
+
+    /**
+     * Generate a fixture file based on a config array.
+     *
+     * @param [array] $fixture
+     * @return object
+     * @throws Exception
+     */
+    public function generateFixture($fixture)
+    {
+        if (isset($fixture['process'])) {
+            $processFunc = $fixture['process'];
+            $vars = isset($fixture['vars']) ? $fixture['vars'] : [];
+            return call_user_func_array($processFunc, [$this, $vars]);
+        }
+
+        $seed      = array_get($fixture, 'seed', null);
+        $callback  = array_get($fixture, 'postProcess', function (&$fixture) {
+            $fixture['id'] = 'default';
+        });
+        $description = array_get($fixture, 'description');
+        $processor = new MockDataProcessor($seed);
+        $specFile  = sprintf(
+            '%s/%s',
+            $this->specterDirectory,
+            $fixture['specterFile']
+        );
+
+        if (!file_exists($specFile)) {
+            throw new \Exception('Invalid spec file: '.$specFile);
+        }
+
+        $spec = file_get_contents($specFile);
+        $spec = json_decode($spec, true);
+        $spec = $processor->substituteMockData($spec);
+
+        // cast to object
+        $spec = json_decode(json_encode($spec), false);
+
+        call_user_func($callback, $spec);
+
+        $spec->__specter = $description;
+
+        return $spec;
+    }
+
+    /**
+     * Confirm that the config entry has the required elements
+     *
+     * @param $fixture
+     */
+    public function checkRequiredSettings($fixture)
+    {
+        if (!array_get($fixture, 'specterFile') && !array_get($fixture, 'process')) {
+            throw new LogicException('Must specify either a specterFile or a process function');
+        }
+        if (!array_get($fixture, 'outputFile')) {
+            throw new LogicException('An output file path is required');
+        }
+    }
+
+    /**
+     * @param String $outputFile
+     * @param object $json
+     */
+    public function outputSpecFile($outputFile, $json)
+    {
+        $outputPath = sprintf(
+            '%s/%s',
+            $this->outputDirectory,
+            $outputFile
+        );
+
+        $dirname = dirname($outputPath);
+        if (!file_exists($dirname)) {
+            mkdir($dirname, 0777, true);
+        }
+
+        file_put_contents(
+            $outputPath,
+            json_encode($json, JSON_PRETTY_PRINT)
+        );
+
+        echo $outputPath, "\n";
+    }
+}
 
 /* End of file specter */

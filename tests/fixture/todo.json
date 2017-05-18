@@ -1,0 +1,8 @@
+{
+  "id": "@uuid@",
+  "title": "@sentence@",
+  "description": "@paragraph@",
+  "createdAt": "@unixTime@",
+  "updatedAt": "@unixTime@",
+  "completed": "@boolean@"
+}
