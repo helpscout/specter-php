@@ -25,9 +25,11 @@ PrePush:
     enabled: true
     branches: ['master']
 
-  CustomScript:
+  PHPUnit:
     enabled: true
-    required_executable: 'vendor/bin/phpunit'
+    command: 'vendor/bin/phpunit'
+    include: '**/*.php'
+    description: 'Running tests [PHP]'
 
 PreCommit:
   ALL:
