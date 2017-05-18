@@ -1,0 +1,109 @@
+#
+# Help Scout PHP Project Commit Hooks
+#
+# This will extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+#
+# At the topmost level of this YAML file is a key representing type of hook
+# being run (e.g. pre-commit, commit-msg, etc.). Within each type you can
+# customize each hook, such as whether to only run it on certain files (via
+# `include`), whether to only display output if it fails (via `quiet`), etc.
+#
+# For a complete list of hooks, see:
+# https://github.com/brigade/overcommit/tree/master/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/brigade/overcommit#configuration
+#
+
+# During plugin development, this will prevent signatures from blocking
+# execution of those under development
+verify_signatures: false
+
+PrePush:
+  ProtectedBranches:
+    enabled: true
+    branches: ['master']
+
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: ignore
+    requires_files: true
+    required: true
+    quiet: false
+    exclude: &default_excludes
+      - 'build/**/*'
+      - 'log/**/*'
+      - 'site/vendors/**/*'
+      - 'vendor-reference/**/*'
+
+  AuthorEmail:
+    enabled: true
+
+  AuthorName:
+    enabled: true
+
+  BrokenSymlinks:
+    enabled: true
+
+  CaseConflicts:
+    enabled: true
+
+  MergeConflicts:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: false
+
+  FixMe:
+    enabled: true
+
+  PhpLint:
+    enabled: true
+    command: 'php'
+    flags: ['-l']
+    include: '**/*.php'
+    problem_on_unmodified_line: report
+    description: 'Checking lint errors [PHP]'
+
+  PhpCs:
+    enabled: true
+    command: 'site/vendors/bin/phpcs'
+    flags: ['--standard=site/vendors/helpscout/php-standards/HelpScout', '--report=csv', '--warning-severity=0']
+    include: '**/*.php'
+    problem_on_unmodified_line: ignore
+    description: 'Checking style violations [PHP]'
+
+PostCheckout:
+  SubmoduleStatus:
+    enabled: true
+
+CommitMsg:
+  CapitalizedSubject:
+    enabled: true
+
+  EmptyMessage:
+    enabled: true
+
+  GerritChangeId:
+    enabled: false
+
+  HardTabs:
+    enabled: true
+
+  RussianNovel:
+    enabled: false
+
+  SingleLineSubject:
+    enabled: true
+
+  SpellCheck:
+    enabled: false
+
+  TextWidth:
+    enabled: true
+    max_subject_width: 50
+    max_body_width: 72
+
+  TrailingPeriod:
+    enabled: false
