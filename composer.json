@@ -45,12 +45,12 @@
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
-        "helpscout/php-standards": "dev-master",
+        "helpscout/php-standards": "^1.0",
         "illuminate/http": "5.*",
         "jakub-onderka/php-console-highlighter": "^0.3.2",
         "jakub-onderka/php-parallel-lint": "^0.9.2",
         "phpunit/phpunit": "^6.1",
-        "squizlabs/php_codesniffer": "^2.9.0"
+        "squizlabs/php_codesniffer": "^3.0"
     },
     "bin": [
         "bin/specter"
