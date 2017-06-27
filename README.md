@@ -114,3 +114,4 @@ that offer some useful mocking.
 [middleware]: https://github.com/helpscout/specter/blob/master/src/SpecterMiddleware.php
 [testtrait]: https://github.com/helpscout/specter/blob/master/src/SpecterTestTrait.php
 [pre-commit]: http://pre-commit.com/
+.
