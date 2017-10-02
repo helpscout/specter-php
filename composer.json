@@ -1,5 +1,5 @@
 {
-    "name": "helpscout/specter",
+    "name": "helpscout/specter-php",
     "description": "JSON API Mocking and Testing for PHP",
     "type": "library",
     "license": "MIT",
