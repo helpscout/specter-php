@@ -19,7 +19,7 @@
         }
     ],
     "support": {
-      "issues": "https://github.com/helpscout/php-standards/issues"
+      "issues": "https://github.com/helpscout/specter-php/issues"
     },
     "autoload": {
         "files": [

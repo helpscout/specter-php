@@ -79,8 +79,8 @@ trait SpecterTestTrait
      *
      * @param ResponseInterface $response   psr7 response object
      * @param string            $filename   path to fixture file (no extension)
-     * @param string            $mimeType   fixture file extension and mime type
-     * @param integer           $statusCode expected status code of response
+     * @param string|null       $mimeType   fixture file extension and mime type
+     * @param int|null          $statusCode expected status code of response
      *
      * @return void
      * @throws RuntimeException
@@ -88,7 +88,7 @@ trait SpecterTestTrait
      */
     static public function assertResponse(
         ResponseInterface $response,
-        $filename,
+        string $filename,
         $mimeType = 'json',
         $statusCode = 200
     ) {
@@ -100,13 +100,13 @@ trait SpecterTestTrait
      * Assert an api response http code
      *
      * @param ResponseInterface $response   psr7 response object
-     * @param integer           $statusCode expected status code
+     * @param int               $statusCode expected status code
      *
      * @return void
      */
     static public function assertResponseCode(
         ResponseInterface $response,
-        $statusCode
+        int $statusCode
     ) {
         self::assertEquals(
             $statusCode,
@@ -127,7 +127,7 @@ trait SpecterTestTrait
      *
      * @param ResponseInterface $response psr7 response object
      * @param string|resource   $filename path within `$fixtureFolder`
-     * @param string            $mimeType file extension and mime type
+     * @param string|null       $mimeType file extension and mime type
      *
      * @throws LogicException
      * @throws RuntimeException
@@ -225,9 +225,9 @@ trait SpecterTestTrait
      * @return string string matcher type
      * @throws LogicException
      */
-    static private function getMatcherType($producer)
+    static private function getMatcherType(string $producer)
     {
-        // Explode a `randomElements|args1|arg2|arg3` into its constituent pieces
+        // Explode a `randomElements|args1|arg2|arg3` into pieces
         $pieces       = explode('|', $producer);
         $producerName = $pieces[0];
         $arguments    = array_splice($pieces, 1);
@@ -268,7 +268,7 @@ trait SpecterTestTrait
      * @return string fixture data as json string
      * @throws LogicException
      */
-    static private function getFixtureText($filename, $mimeType)
+    static private function getFixtureText($filename, string $mimeType)
     {
         if (is_resource($filename)) {
             return stream_get_contents($filename);
@@ -313,7 +313,7 @@ trait SpecterTestTrait
      *
      * @codeCoverageIgnore
      */
-    static public function setFixtureFolder($path)
+    static public function setFixtureFolder(string $path)
     {
         self::$fixtureFolder = rtrim($path, '/');
     }

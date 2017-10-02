@@ -41,8 +41,8 @@ class RelatedElement extends Base
     protected $trigger;
 
     /**
-     * @param Generator $generator
-     * @param string    $trigger
+     * @param Generator   $generator
+     * @param string|null $trigger
      */
     public function __construct(Generator $generator, $trigger = '@')
     {
@@ -61,8 +61,11 @@ class RelatedElement extends Base
      *
      * @return string
      */
-    public function relatedElement($relatedTo, array $fixture, array $options)
-    {
+    public function relatedElement(
+        string $relatedTo,
+        array $fixture,
+        array $options
+    ) {
         if (!array_key_exists($relatedTo, $fixture)) {
             return 'Invalid related to key: '.$relatedTo;
         }

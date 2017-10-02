@@ -64,19 +64,12 @@ PreCommit:
 
   PhpLint:
     enabled: true
-    command: 'php'
-    flags: ['-l']
-    include: '**/*.php'
     problem_on_unmodified_line: report
-    description: 'Checking lint errors [PHP]'
 
   PhpCs:
     enabled: true
-    command: 'vendor/bin/phpcs'
-    flags: ['--standard=vendor/helpscout/php-standards/HelpScout', '--report=csv', '--warning-severity=0']
-    include: '**/*.php'
     problem_on_unmodified_line: ignore
-    description: 'Checking style violations [PHP]'
+    flags: ['--standard=vendor/helpscout/php-standards/HelpScout', '--report=csv', '--warning-severity=0']
 
 PostCheckout:
   SubmoduleStatus:

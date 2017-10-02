@@ -21,7 +21,7 @@ trait FakerFactory
     /**
      * Create a faker instance with an optional seed.
      *
-     * @param integer $seed random generator seed for repeatable results
+     * @param int|null $seed random generator seed for repeatable results
      *
      * @return Faker\Generator
      */

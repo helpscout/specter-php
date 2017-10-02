@@ -39,8 +39,8 @@ class Avatar extends Base
      *  - wavatar: generated faces with differing features and backgrounds
      *  - retro: awesome generated, 8-bit arcade-style pixelated faces
      *
-     * @param string  $type Art type for the avatar
-     * @param integer $size Pixel width dimension
+     * @param string|null $type Art type for the avatar
+     * @param int|null    $size Pixel width dimension
      *
      * @return string url to image
      */

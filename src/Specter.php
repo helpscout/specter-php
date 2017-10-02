@@ -40,7 +40,7 @@ class Specter
      *
      * Initialize with a seed for repeatable fixture data
      *
-     * @param integer $seed Faker seed value
+     * @param int|null $seed Faker seed value
      *
      * @return Specter
      */

@@ -40,12 +40,12 @@ trait PSR7HttpFactory
     /**
      * Create a php stream with text.
      *
-     * @param string $text
-     * @param string $mode
+     * @param string      $text
+     * @param string|null $mode
      *
      * @return resource
      */
-    public function streamFactory($text, $mode = 'r+')
+    public function streamFactory(string $text, $mode = 'r+')
     {
         $stream = fopen('php://temp', $mode);
         fwrite($stream, $text);
@@ -57,13 +57,13 @@ trait PSR7HttpFactory
     /**
      * Create a new PSR7 Response Object.
      *
-     * @param string  $content
-     * @param integer $code
+     * @param string   $content
+     * @param int|null $code
      *
      * @return Response
      * @throws \InvalidArgumentException
      */
-    public function responseFactory($content, $code = 200)
+    public function responseFactory(string $content, $code = 200)
     {
         $headers = [];
         return new Response($code, $headers, $content);

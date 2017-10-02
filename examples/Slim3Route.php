@@ -18,7 +18,7 @@
  *
  * @return mixed
  */
-function getFixture($name)
+function getFixture(string $name)
 {
     $path = BASE_DIR.'/fixture/'.$name.'.json';
     $data = file_get_contents($path);
