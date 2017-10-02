@@ -1,4 +1,5 @@
-Specter [![Build Status](https://travis-ci.org/helpscout/specter-php.svg?branch=master)](https://travis-ci.org/helpscout/specter-php) [![Code Climate](https://codeclimate.com/github/helpscout/specter-php/badges/gpa.svg)](https://codeclimate.com/github/helpscout/specter-php) [![Test Coverage](https://codeclimate.com/github/helpscout/specter-php/badges/coverage.svg)](https://codeclimate.com/github/helpscout/specter-php/coverage)================================================================================
+Specter [![Build Status](https://travis-ci.org/helpscout/specter-php.svg?branch=master)](https://travis-ci.org/helpscout/specter-php) [![Code Climate](https://codeclimate.com/github/helpscout/specter-php/badges/gpa.svg)](https://codeclimate.com/github/helpscout/specter-php) [![Test Coverage](https://codeclimate.com/github/helpscout/specter-php/badges/coverage.svg)](https://codeclimate.com/github/helpscout/specter-php/coverage)
+================================================================================
 > __Mocking and Testing for PHP__
 > Use a single JSON file to generate mock data and as an integration test assertion
 
