@@ -23,7 +23,7 @@ front end team uses the data from it, and the platform team tests with it.
 
 ## Installation
 
-This is available through composer as `helpscout/specter`.
+This is available through composer as `helpscout/specter-php`.
 
 ## Contributing
 1. `git clone`
